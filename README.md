@@ -1,16 +1,6 @@
-# drawer
+Video tutorial on youtube: https://youtu.be/TQTS6jO8Ldk
 
-A new Flutter project.
+How to clone a specific branch?
+On your machine open any folder and run the below command on cmd
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+"git clone -b master https://git@github.com/irajeshh/drawer.git"
