@@ -1,0 +1,19 @@
+name: fluttership
+description: A Project Where I Share The Things I Love To Share
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0" #I don't use nullsafety to use nullsaftety replace 2.7.0 with 2.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
