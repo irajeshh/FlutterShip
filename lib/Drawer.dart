@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Cosntants/Constants.dart';
+import 'package:fluttership/Constants/Constants.dart';
 
 class DrawerPage extends StatefulWidget {
   const DrawerPage({Key key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Cosntants/Constants.dart';
+import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/HomePage.dart';
 
 class MyApp extends StatelessWidget {
