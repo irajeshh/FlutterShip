@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.drawer">
+    package="com.fireship.project">
    <application
         android:label="FlutterShip"
         android:icon="@mipmap/ic_launcher">
