@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
 
   
 
-  ThemeData get theme => ThemeData.dark().copyWith(//whatever the themedata is & whatever the phone theme is
-    brightness: Brightness.dark, // set brightness to dark
+  ThemeData get theme => ThemeData.light().copyWith(//whatever the themedata is & whatever the phone theme is
+    brightness: Brightness.light, // set brightness to dark
     //now we need to match the blue colors, let us pick it from 
     //photoshop
     //Press PrintScreen to copy the current window 

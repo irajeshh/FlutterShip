@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttership/Drawer.dart';
+import 'package:fluttership/UI/Account.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({ Key key }) : super(key: key);
@@ -11,11 +12,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: body(),
-      drawer: DrawerPage(),
-    );
+    return AccountPage();
+    //we will handle the home page with botom nav, later
+    // return Scaffold(
+    //   appBar: appBar(),
+    //   body: body(),
+    //   drawer: DrawerPage(),
+    // );
   }
 
   Widget appBar(){
