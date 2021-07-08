@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
 
 class AccountPage extends StatefulWidget {
@@ -11,9 +12,9 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Color(0xffffffff),//you can paste your custom code color, but this one is for demo purpose,
-      child: ListView(
+    return Scaffold(
+      backgroundColor: Color(0xffffffff),//you can paste your custom code color, but this one is for demo purpose,
+      body: ListView(
         padding: EdgeInsets.all(12),
         physics: BouncingScrollPhysics(),//use this for a bouncing experience
         children: [
@@ -25,6 +26,9 @@ class _AccountPageState extends State<AccountPage> {
           bwTiles(),
         ],
       ),
+      bottomNavigationBar: bottomNavigationBar(),
+      // floatingActionButton: fab(),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
@@ -101,6 +105,53 @@ class _AccountPageState extends State<AccountPage> {
       fontWeight: FontWeight.w500,
       ),
       trailing: Icon(Icons.arrow_forward_ios,color:Colors.black,size:20),
+      onTap: (){
+
+      },
     );
   }
+
+
+
+  Widget bottomNavigationBar(){
+    List<IconData> icons = [
+      Icons.home, Icons.search, Icons.add, Icons.notifications, Icons.person_outline,
+    ];
+
+
+    return BottomNavigationBar(
+      currentIndex: 2,
+      items: icons.map((icon) => item(icon)).toList(),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      backgroundColor: Colors.white,
+      selectedItemColor: Colorz.accountPurple,
+      unselectedItemColor: Colors.grey,
+    );
+  }
+
+  BottomNavigationBarItem item(IconData icon,){
+    return BottomNavigationBarItem(
+      icon: icon==Icons.add? addButton(): Icon(icon),
+      label: "label",
+    );
+  }
+
+  Widget addButton(){
+    return CircleAvatar(
+      child: Icon(Icons.add, color: Colors.white),
+      backgroundColor: Colorz.accountPurple,
+    );
+  }
+
+
+  // Widget fab(){
+  //   //this is not satisfying for
+  //   // return FloatingActionButton(
+  //   //   mini: true,
+  //   //   child: Icon(Icons.add,
+  //   //   color: Colors.white),
+  //   //   onPressed: () {},
+  //   // );
+  // }
 }
