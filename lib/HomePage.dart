@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Drawer.dart';
-import 'package:fluttership/UI/Account.dart';
+import 'package:fluttership/UI/CurrenciesPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({ Key key }) : super(key: key);
@@ -12,7 +11,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return AccountPage();
+    return CurrenciesPage();
+    // return AccountPage();
     //we will handle the home page with botom nav, later
     // return Scaffold(
     //   appBar: appBar(),
@@ -21,19 +21,19 @@ class _HomePageState extends State<HomePage> {
     // );
   }
 
-  Widget appBar(){
-    return AppBar(
-        title: Text("FlutterShip"),
-      );
-  }
+  // Widget appBar(){
+  //   return AppBar(
+  //       title: Text("FlutterShip"),
+  //     );
+  // }
 
-  Widget body(){
-    return Center(
-        child: FlutterLogo(
-          size: 150,
-        ),
-      );
-  }
+  // Widget body(){
+  //   return Center(
+  //       child: FlutterLogo(
+  //         size: 150,
+  //       ),
+  //     );
+  // }
 
 }
 
