@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/UI/CurrenciesPage.dart';
+import 'package:fluttership/UI/SendMoneyPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({ Key key }) : super(key: key);
@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return CurrenciesPage();
+    return SendMoneyPage();
     // return AccountPage();
     //we will handle the home page with botom nav, later
     // return Scaffold(

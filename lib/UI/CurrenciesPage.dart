@@ -157,7 +157,7 @@ class _CurrenciesPageState extends State<CurrenciesPage> {
     Color color = selected? Colorz.currencyIndicatorColor: Colors.transparent;
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: AnimatedContainer(
+      child: AnimatedContainer( 
         height: 2.5, // selected? 2.5:0, let us keep it as fixed
         width: selected? 70:0,
         duration: Duration(seconds:1),

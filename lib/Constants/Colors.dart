@@ -16,5 +16,7 @@ class Colorz {
   static const Color currenciesNameColor = Color(0xff7080b3);
   static const Color currencyPositiveGreen = Color(0xff0eff7e);
   static const Color currencyIndicatorColor = Color(0xff6170f3);
+
+  static const Color sendMoneyBlue = Color(0xff4285f4);
   
 }
