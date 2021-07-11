@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fluttership/Constants/Constants.dart';
+import 'package:fluttership/Widgets/Widgets.dart';
 
-class DrawerPage extends StatefulWidget {
-  const DrawerPage({Key key}) : super(key: key);
+class TimerDrawerPage extends StatefulWidget {
+  const TimerDrawerPage({Key key}) : super(key: key);
 
   @override
-  _DrawerPageState createState() => _DrawerPageState();
+  _TimerDrawerPageState createState() => _TimerDrawerPageState();
 }
 
-class _DrawerPageState extends State<DrawerPage> {
+class _TimerDrawerPageState extends State<TimerDrawerPage> {
   @override
   Widget build(BuildContext context) {
 //optionally I use container with 1/3 of the media query width
-    return Drawer(
-      child: Column(
-        children: [
-          userAccountsDrawerHeader(),
-          tilesBuilder(),
-        ],
-      ),
+    return Scaffold(
+      appBar: appBar(),
+      body: body(),
+      drawer: drawer(),
     );
   }
 
@@ -35,6 +33,31 @@ class _DrawerPageState extends State<DrawerPage> {
 
   
 */
+
+Widget appBar(){
+  return AppBar(
+    title: Txt(text: "Simple Drawer"),
+  );
+}
+
+Widget body(){
+  return Center(
+    child: FlutterLogo(
+      size: 150,
+    ),
+  );
+}
+
+Widget drawer(){
+  return Drawer(
+      child: Column(
+        children: [
+          userAccountsDrawerHeader(),
+          tilesBuilder(),
+        ],
+      ),
+    );
+}
 
   Widget userAccountsDrawerHeader() {
     double width = MediaQuery.of(context).size.width;
