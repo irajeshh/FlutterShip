@@ -11,7 +11,7 @@ class CurrenciesPage extends StatefulWidget {
 }
 
 class _CurrenciesPageState extends State<CurrenciesPage> {
-
+  final ScrollController _scrollController = ScrollController();
   int currentIndex = 2;
 
 
@@ -19,6 +19,9 @@ class _CurrenciesPageState extends State<CurrenciesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
      backgroundColor: Colorz.currenciesPageBackground,
+     appBar: AppBar(
+        backgroundColor: Colorz.currenciesPageBackground,
+     ),
      body: listView(),
      bottomNavigationBar: bottomNavigationBar(),
     );
@@ -38,10 +41,15 @@ class _CurrenciesPageState extends State<CurrenciesPage> {
 
   Widget listView(){
     //To get bouncing effect, we use listview
-    return ListView(
-      // mainAxisAlignment: MainAxisAlignment.end,
-      physics: BouncingScrollPhysics(),
-      children: currencies.map((currency)=> tile(currency)).toList(),
+    return Scroller(
+      // useScrollIndicator: false,
+      scrollController: _scrollController,
+      child: ListView(
+        // mainAxisAlignment: MainAxisAlignment.end,
+        physics: BouncingScrollPhysics(),
+        controller: _scrollController,
+        children: currencies.map((currency)=> tile(currency)).toList(),
+      ),
     );
   }
 

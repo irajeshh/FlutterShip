@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 part './Txt.dart';
 part './ColorTile.dart';
+part './Scroller.dart';
 
 
 class FadePageRoute extends PageRouteBuilder {
@@ -45,5 +46,13 @@ class Widgets {
           shape: BoxShape.circle,
         ),
       );
+  }
+
+     void push(Widget child,BuildContext context) {
+    if(child!=null){
+      Navigator.push(context, FadePageRoute(widget: child));
+    }else{
+      // showToast("No destination page found", context);
+    }
   }
 }
