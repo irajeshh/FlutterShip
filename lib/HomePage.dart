@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/Clone.dart';
 import 'package:fluttership/UI/Account.dart';
+import 'package:fluttership/UI/GoogleSearchPage.dart';
 import 'package:fluttership/UI/SendMoneyPage.dart';
 import 'package:fluttership/UI/TimerDrawerPage.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
@@ -98,6 +99,8 @@ class _HomePageState extends State<HomePage> {
     Clone(CurrenciesPage(), Colors.green, Icons.monetization_on, "Currency page", "Crypto currency coins app design dribbble.com"),
     Clone(SendMoneyPage(), Colorz.sendMoneyBlue, Icons.dialpad,"Send Money", "Money transfer screen design from dribbble.com"),
     Clone(ScrollerSamplePage(), Colors.blue, Icons.list, "Scroller Sample", "Example use case of scroller widget"),
+    Clone(GoogleSearchPage(), Colors.amber, Icons.search, "Google Search Clone", "Cloing a google search results page"),
+    
   ];
 
 
