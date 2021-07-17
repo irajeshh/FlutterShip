@@ -51,10 +51,9 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
   }
 
   Widget userTile(){
-      String url = "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287421_960_720.jpg";
    return ListTile(
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(url),
+        backgroundImage: NetworkImage(Urls.avatar2),
       ),
       title: Txt(
        text: "Jane Foster",

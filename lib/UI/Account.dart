@@ -33,11 +33,10 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget userTile(){
-    String url = "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287421_960_720.jpg";
     //I use pixabay.com & unsplash.com for most of the time.
     return ListTile(
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(url),
+        backgroundImage: NetworkImage(Urls.avatar1),
       ),
       title: Txt(
         text: "Talan Lipshutz",

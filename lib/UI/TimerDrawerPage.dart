@@ -89,12 +89,11 @@ Widget drawer(){
 
 
   Widget avatar(){
-    String url = 'https://images.unsplash.com/photo-1516384903227-139a8cf0ec21?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
     // I use pixabay.com & unsplash.com for non copyrighted images
     return Container(
 
       child: CircleAvatar(
-        backgroundImage: NetworkImage(url),
+        backgroundImage: NetworkImage(Urls.avatar3),
         //I don't use any default image widgets in my projects
         //Will share my Img() widget that I use on a regular basis,
 
