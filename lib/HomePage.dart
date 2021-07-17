@@ -7,6 +7,7 @@ import 'package:fluttership/UI/SendMoneyPage.dart';
 import 'package:fluttership/UI/TimerDrawerPage.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
 
+import 'UI/ComplexDrawerPage.dart';
 import 'UI/CurrenciesPage.dart';
 import 'UI/ScrollerSamplePage.dart';
 
@@ -100,6 +101,7 @@ class _HomePageState extends State<HomePage> {
     Clone(SendMoneyPage(), Colorz.sendMoneyBlue, Icons.dialpad,"Send Money", "Money transfer screen design from dribbble.com"),
     Clone(ScrollerSamplePage(), Colors.blue, Icons.list, "Scroller Sample", "Example use case of scroller widget"),
     Clone(GoogleSearchPage(), Colors.amber, Icons.search, "Google Search Clone", "Cloing a google search results page"),
+    Clone(ComplexDrawerPage(), Colors.black, Icons.menu, "Complex Drawer", "Designing a complex drawer menu"),
     
   ];
 
