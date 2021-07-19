@@ -3,6 +3,7 @@ import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/Clone.dart';
 import 'package:fluttership/UI/Account.dart';
 import 'package:fluttership/UI/GoogleSearchPage.dart';
+import 'package:fluttership/UI/InterLacedDashBoard.dart';
 import 'package:fluttership/UI/SendMoneyPage.dart';
 import 'package:fluttership/UI/TimerDrawerPage.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
@@ -94,7 +95,7 @@ class _HomePageState extends State<HomePage> {
 
 
 
-  List<Clone> clones = [
+  static List<Clone> clones = [
     Clone(TimerDrawerPage(), Colorz.timerBlue, Icons.calendar_today, "Timer Drawer", "Simple clean drawer design from dribbble.com"),
     Clone(AccountPage(), Colors.pink, Icons.person, "Account Page", "Colorful & BW Account Dashboard"),
     Clone(CurrenciesPage(), Colors.green, Icons.monetization_on, "Currency page", "Crypto currency coins app design dribbble.com"),
@@ -102,6 +103,7 @@ class _HomePageState extends State<HomePage> {
     Clone(ScrollerSamplePage(), Colors.blue, Icons.list, "Scroller Sample", "Example use case of scroller widget"),
     Clone(GoogleSearchPage(), Colors.amber, Icons.search, "Google Search Clone", "Cloing a google search results page"),
     Clone(ComplexDrawerPage(), Colors.black, Icons.menu, "Complex Drawer", "Designing a complex drawer menu"),
+    Clone(InterLacedDashBoard(), Colors.purple, Icons.dashboard_outlined, "Interlaced Dashboard", "Designing a mixed account dashboard"),
     
   ];
 

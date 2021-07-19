@@ -26,4 +26,11 @@ class Colorz {
   static const Color compexDrawerCanvasColor = Color(0xffe3e9f7);
   static const Color complexDrawerBlack = Color(0xff11111d);
   static const Color complexDrawerBlueGrey = Color(0xff1d1b31);
+
+
+
+  //interlaced dashboard
+  static const Color interlacedBackground = Color(0xfff7f8fa);
+  static const Color interlacedAvatarBorderBlue = Color(0xff2554fc);
+  static const Color interlacedChatPurple = Color(0xff8532fb);
 }

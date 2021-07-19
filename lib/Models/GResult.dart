@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class GResult {
   final String url;
   final String title;

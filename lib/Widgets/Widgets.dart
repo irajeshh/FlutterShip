@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 part './Txt.dart';
 part './ColorTile.dart';
 part './Scroller.dart';
-
+part './CrossFade.dart';
 
 class FadePageRoute extends PageRouteBuilder {
   final Widget widget;

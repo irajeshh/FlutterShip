@@ -253,7 +253,7 @@ class _ComplexDrawerState extends State<ComplexDrawer> {
     return InkWell(
                     onTap: (){
 
-                      //TODO handle the function
+                      //handle the function
                       //if index==0? donothing: doyourlogic here
                     },
                     child: Padding(

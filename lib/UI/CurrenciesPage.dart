@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/Currency.dart';
+import 'package:fluttership/Models/IconLabel.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
 
 class CurrenciesPage extends StatefulWidget {
@@ -138,7 +139,7 @@ class _CurrenciesPageState extends State<CurrenciesPage> {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
-      items: bns.map((bn) => item(bn,bns.indexOf(bn)==currentIndex)).toList(),
+      items: iconLabels.map((iconLabel) => item(iconLabel,iconLabels.indexOf(iconLabel)==currentIndex)).toList(),
       showSelectedLabels: true,
       showUnselectedLabels: true,
       selectedItemColor: Colors.white,
@@ -147,17 +148,17 @@ class _CurrenciesPageState extends State<CurrenciesPage> {
     );
   }
 
-  BottomNavigationBarItem item(BN bn,bool selected){
+  BottomNavigationBarItem item(IconLabel iconLabel,bool selected){
     return BottomNavigationBarItem(
       backgroundColor: Colorz.currenciesPageBackground,
       icon: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           indicator(selected),
-          Icon(bn.icon),
+          Icon(iconLabel.icon),
         ],
       ),
-      label: bn.label
+      label: iconLabel.label
     );
   }
 
@@ -207,20 +208,15 @@ class _CurrenciesPageState extends State<CurrenciesPage> {
   ];
 
 
-  static   List<BN> bns = [
-      BN( Icons.cached, "Exchange"),
-      BN( Icons.show_chart_outlined, "Analytics"),
-      BN( Icons.devices_outlined, "Currencies"),
-      BN( Icons.more_horiz_outlined, "More"),
+  static   List<IconLabel> iconLabels = [
+      IconLabel( Icons.cached, "Exchange"),
+      IconLabel( Icons.show_chart_outlined, "Analytics"),
+      IconLabel( Icons.devices_outlined, "Currencies"),
+      IconLabel( Icons.more_horiz_outlined, "More"),
     ];
 
 }
 
-class BN {
-  final IconData icon;
-  final String label;
 
-  BN(this.icon, this.label);
-}
 
 //let us define those parameters into a class
