@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/Clone.dart';
 import 'package:fluttership/UI/Account.dart';
+import 'package:fluttership/UI/AssemblingAnalyticsPage.dart';
 import 'package:fluttership/UI/GoogleSearchPage.dart';
 import 'package:fluttership/UI/InterLacedDashBoard.dart';
 import 'package:fluttership/UI/SendMoneyPage.dart';
@@ -104,6 +105,7 @@ class _HomePageState extends State<HomePage> {
     Clone(GoogleSearchPage(), Colors.amber, Icons.search, "Google Search Clone", "Cloing a google search results page"),
     Clone(ComplexDrawerPage(), Colors.black, Icons.menu, "Complex Drawer", "Designing a complex drawer menu"),
     Clone(InterLacedDashBoard(), Colors.purple, Icons.dashboard_outlined, "Interlaced Dashboard", "Designing a mixed account dashboard"),
+    Clone(AssemblingAnalyticsPage(), Colors.blue, Icons.apps, "Assembling Analytics", "Analytics page with auto assembling animated widgets"),
     
   ];
 
