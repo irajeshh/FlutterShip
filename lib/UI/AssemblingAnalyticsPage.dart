@@ -32,7 +32,7 @@ class _AssemblingAnalyticsPageState extends State<AssemblingAnalyticsPage> {
   bool showCurrencyTile2 = false; 
   bool showNoAnalytics = false;
   bool showCurrencyTile3 = false;
-  bool showFab = false;
+  bool showFab = false; 
   
 
 

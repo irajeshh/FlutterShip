@@ -4,6 +4,7 @@ part './Txt.dart';
 part './ColorTile.dart';
 part './Scroller.dart';
 part './CrossFade.dart';
+part './Button.dart';
 
 class FadePageRoute extends PageRouteBuilder {
   final Widget widget;
