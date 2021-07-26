@@ -6,6 +6,7 @@ import 'package:fluttership/UI/AssemblingAnalyticsPage.dart';
 import 'package:fluttership/UI/ExpandedBottomNav.dart';
 import 'package:fluttership/UI/GoogleSearchPage.dart';
 import 'package:fluttership/UI/InterLacedDashBoard.dart';
+import 'package:fluttership/UI/RichCalculator.dart';
 import 'package:fluttership/UI/SendMoneyPage.dart';
 import 'package:fluttership/UI/TimerDrawerPage.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
@@ -108,7 +109,7 @@ class _HomePageState extends State<HomePage> {
     Clone(InterLacedDashBoard(), Colors.purple, Icons.dashboard_outlined, "Interlaced Dashboard", "Designing a mixed account dashboard"),
     Clone(AssemblingAnalyticsPage(), Colors.blue, Icons.apps, "Assembling Analytics", "Analytics page with auto assembling animated widgets"),
     Clone(ExpandedBottomNavigationBarPage(), Colorz.complexDrawerBlack, Icons.dns, "Expanded Bottom Navigation Bar", "A custom bottom navigation bar with additional menus"),
-    
+    Clone(RichCalculatorPage(), Colors.black, Icons.calculate, "Rich Calculator", "A Non functioning calculator ui"),    
   ];
 
 

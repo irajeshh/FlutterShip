@@ -33,4 +33,12 @@ class Colorz {
   static const Color interlacedBackground = Color(0xfff7f8fa);
   static const Color interlacedAvatarBorderBlue = Color(0xff2554fc);
   static const Color interlacedChatPurple = Color(0xff8532fb);
+
+
+  //richCalculator
+  static const Color richCalculatorCanvas = Color(0xff222433);
+  static const Color richCalculatorOutterButtonColor = Color(0xff333549);
+  static const Color richCalculatorInnerButtonColor = Color(0xff2c2e41);
+  static const Color richCalculatorYellowButtonColor = Color(0xffffba001);
+  
 }
