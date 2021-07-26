@@ -8,3 +8,9 @@ part of './Constants.dart';
 
    String get string => this.toString().split('.').last;//sample: GResultType.Videos => => "GresultType, Videos" [GresultType, Videos] => Videos;
  }
+
+
+
+ enum OptionType {
+   Memory, Storage, Ethernet, FinalCutPro, LogicPro
+ }
