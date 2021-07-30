@@ -214,7 +214,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     color: Colors.white70,
                   ),
                   trailing: (selected ==true && isDefault ==false) ? Icon(Icons.check_circle,color: Colorz.timerBlue):null,                             
-                  onTap: (){
+                  onTap: (){ 
     switch (option.type) {
         
         case OptionType.Memory:
@@ -316,9 +316,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     showDialog(
     context: context,
     builder: (context){
-      return BuyDialgoue();
+     return BuyDialgoue();
     }
-  );
+   );
   }
 
 

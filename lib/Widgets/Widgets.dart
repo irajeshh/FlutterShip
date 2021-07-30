@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 part './Txt.dart';
@@ -5,6 +6,8 @@ part './ColorTile.dart';
 part './Scroller.dart';
 part './CrossFade.dart';
 part './Button.dart';
+part './Inkk.dart';
+part './Img.dart';
 
 class FadePageRoute extends PageRouteBuilder {
   final Widget widget;
