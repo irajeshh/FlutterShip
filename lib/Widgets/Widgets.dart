@@ -1,5 +1,10 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:async/async.dart';
+import 'package:fluttership/Repos/Img.dart';
 
 part './Txt.dart';
 part './ColorTile.dart';
@@ -8,6 +13,7 @@ part './CrossFade.dart';
 part './Button.dart';
 part './Inkk.dart';
 part './Img.dart';
+part './Avatar.dart';
 
 class FadePageRoute extends PageRouteBuilder {
   final Widget widget;
