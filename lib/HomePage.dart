@@ -42,26 +42,6 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         searchField(),
-        Button(
-          icon: Icons.cloud_circle,
-          text: "Upload",
-          outlined: true,
-        ),
-        Button(
-          icon: Icons.cloud_circle,
-          text: "Upload",
-        ),
-        Button(
-          icon: Icons.cloud_circle,
-          text: "Uploading...",
-          showLoading: true,
-        ),
-        Button(
-          icon: Icons.cloud_circle,
-          text: "Uploading...",
-          showLoading: true,
-          outlined: true,
-        ),
         clonesResult(),
       ],
     );
