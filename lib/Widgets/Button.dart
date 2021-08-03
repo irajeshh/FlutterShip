@@ -2,113 +2,151 @@ part of './Widgets.dart';
 
 
 class Button extends StatelessWidget {
-  final Widget iconChild;
-  final IconData icon;
+  final dynamic icon;
   final dynamic text;
-  final Color color;
+  final Color textColor;
   final double radius;
   final onPressed;
   final Color buttonColor;
-  final double size;
+  final double fontSize;
   final int maxLines;
   final double height;
   final double width;
-  final FontWeight weight;
+  final FontWeight fontWeight;
   final bool upperCaseFirst;
   final bool showLoading;
+  final bool outlined;
   const Button({
     Key key,
-    this.size,
-    this.iconChild,
+    this.fontSize,
     this.icon,
     this.text,
-    this.color,
+    this.textColor = Colors.white,
     this.radius,
-    this.onPressed,
+    this.onPressed = invalidAction,
     this.buttonColor = Colors.deepPurple,
     this.maxLines,
     this.height,
-    this.width, this.weight, this.upperCaseFirst=false, this.showLoading=false,
+    this.width,
+    this.fontWeight,
+    this.upperCaseFirst=false,
+    this.showLoading=false,
+    this.outlined = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final RoundedRectangleBorder _shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius ?? 6));
-    Color _buttonColor =  buttonColor ?? Colors.blue;
-    Color _textColor =  color ?? Colors.white;
+    return Container(
+      height: height ?? 52,
+      width: width,
+      padding: EdgeInsets.all(8),
+      child: finalButton(),
+    );
+  }
 
-    Widget button;
+ 
+ Widget finalButton(){
+   if(isIconButton){
+     return outlined? outlinedIconButton() : iconButton();
+   }else{
+     return outlined? outlinedNormalButton():normalButton();
+   }
+ }
 
-    Widget txtWidget() {
+
+ Widget iconButton(){
+   return TextButton.icon(
+        icon: iconWidget(),
+        style: normalButtonStyle,
+        label: label(),
+        onPressed: onPressed,
+     );
+ }
+
+ Widget normalButton(){
+   return TextButton(
+      child: txtWidget(),
+      style: normalButtonStyle,
+      onPressed: onPressed,
+   );
+ }
+
+
+ Widget outlinedIconButton(){
+   return OutlinedButton.icon(
+     icon: iconWidget(),
+     label: label(),
+     onPressed: onPressed,
+     style: outlinedButtonStyle,
+   );
+ }
+ 
+ Widget outlinedNormalButton(){
+   return OutlinedButton(
+     child: label(),
+     onPressed: onPressed,
+     style: outlinedButtonStyle,
+   );
+ }
+
+  Widget label(){
+    return Flexible(child: txtWidget());
+  }
+
+  Widget txtWidget() {
       return Txt(
         text: text,
-        fontSize: size,
-        fontWeight: weight,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
         maxlines: maxLines ?? 1,
         useoverflow: true,
         color: _textColor,
         upperCaseFirst:upperCaseFirst,
       );
-    }
+   }
 
-    Widget iconWidget(){
-      Widget finalIconWIdget;
-      if (icon != null) finalIconWIdget = Icon(icon,color: color ?? _textColor,size: size);
-      if(finalIconWIdget == null) finalIconWIdget = iconChild;
-      if(showLoading) finalIconWIdget = loadingCircle();
-      return finalIconWIdget;
-    }
+   Widget iconWidget(){
+    Widget child;
+    if(icon is IconData) child = Icon(icon, color: _textColor, size: fontSize);
+    if(icon is Widget) child = icon;
+    if(showLoading) child = loadingCircle();
+    return child;
+   }
 
-//iconButton
-
-
-
-
-
-    if (iconWidget() != null) {
-      button = TextButton.icon(
-              icon: iconWidget(),
-              style: TextButton.styleFrom(
-                backgroundColor: buttonColor ?? _buttonColor,
-                shape: _shape,
-              ),
-              label: Flexible(child: txtWidget()),
-              onPressed: onPressed,
-            );
-    } else {
-      button = TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: buttonColor ?? _buttonColor,
-                shape: _shape,
-              ),
-              child: txtWidget(),
-              onPressed: onPressed,
-            );
-    }
-
-    return Container(
-      height: height ?? 52,
-      width: width,
-      padding: EdgeInsets.all(8),
-      child: button,
-    );
-  }
 
 
    Widget loadingCircle(){
     return Material(
      type: MaterialType.circle,
-     color: buttonColor,
+     color: outlined? Colors.transparent : buttonColor,
+     elevation: 0,
      child: SizedBox(
-        height: 26,
-        width: 26,
+        height: outlined?22:26,
+        width: outlined?22:26,
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(Colors.white),
+            valueColor: AlwaysStoppedAnimation(_textColor),
           ),
        ),
       ),
     );
   }
+
+
+  static void invalidAction(){
+    print("Invalid Action");
+  }
+
+  
+
+ 
+
+
+  bool get isIconButton => icon!=null;
+  Color get _textColor => outlined? buttonColor : textColor;
+  ButtonStyle get normalButtonStyle => TextButton.styleFrom(backgroundColor: buttonColor, shape: shape);
+  ButtonStyle get outlinedButtonStyle => OutlinedButton.styleFrom(shadowColor: buttonColor, onSurface: buttonColor, primary: buttonColor, shape: shape);
+  RoundedRectangleBorder get shape => RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius ??6));
+ 
 }

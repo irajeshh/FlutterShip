@@ -74,7 +74,7 @@ class _BuyDialgoueState extends State<BuyDialgoue> {
         bool isConfirmOption = options.indexOf(option)==1;
         return Button(
           text: option,
-          color: Colors.white,
+          textColor: Colors.white,
           width: MediaQuery.of(context).size.width/2.75,
           buttonColor: isConfirmOption? Colorz.timerBlue:Colorz.complexDrawerBlueGrey,
           showLoading: isLoading && isConfirmOption,
