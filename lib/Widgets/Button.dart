@@ -3,6 +3,7 @@ part of './Widgets.dart';
 
 class Button extends StatefulWidget {
   final dynamic icon;
+  final dynamic onTaskCompletedIcon;
   final dynamic text;
   final String processingText;
   final String ontaskCompletedText; 
@@ -36,6 +37,7 @@ class Button extends StatefulWidget {
     this.outlined = false,
     this.processingText,
     this.ontaskCompletedText,
+    this.onTaskCompletedIcon,
   }) : super(key: key);
 
   @override
@@ -125,8 +127,9 @@ class _ButtonState extends State<Button> {
 
    Widget iconWidget(){
     Widget child;
-    if(widget.icon is IconData) child = Icon(widget.icon, color: _textColor, size: widget.fontSize);
-    if(widget.icon is Widget) child = widget.icon;
+    dynamic _icon = taskCompleted? (widget.onTaskCompletedIcon ?? widget.icon) : widget.icon;
+    if(_icon is IconData) child = Icon(_icon, color: _textColor, size: widget.fontSize);
+    if(_icon is Widget) child = _icon;
     if(widget.processing) child = loadingCircle();
     return child;
    }
@@ -157,6 +160,8 @@ class _ButtonState extends State<Button> {
     setState(()=>taskCompleted=false);
     await widget.onPressed();
     setState(()=>taskCompleted=true);
+    await Future.delayed(Duration(seconds:3));
+    setState(()=>taskCompleted=false);
   }
 
 
