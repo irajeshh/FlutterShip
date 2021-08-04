@@ -41,4 +41,9 @@ class Colorz {
   static const Color richCalculatorInnerButtonColor = Color(0xff2c2e41);
   static const Color richCalculatorYellowButtonColor = Color(0xffffba001);
   
+
+  //buttonExample
+  static const Color buttonExampleCanvas = Color(0xfff3f6ff);
+  static const Color buttonSampleColor = Color(0xff7c2ae8);
+
 }

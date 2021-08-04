@@ -1,12 +1,14 @@
 part of './Widgets.dart';
 
 
-class Button extends StatelessWidget {
+class Button extends StatefulWidget {
   final dynamic icon;
   final dynamic text;
+  final String processingText;
+  final String ontaskCompletedText; 
   final Color textColor;
   final double radius;
-  final onPressed;
+  final Function onPressed;
   final Color buttonColor;
   final double fontSize;
   final int maxLines;
@@ -14,7 +16,7 @@ class Button extends StatelessWidget {
   final double width;
   final FontWeight fontWeight;
   final bool upperCaseFirst;
-  final bool showLoading;
+  final bool processing;
   final bool outlined;
   const Button({
     Key key,
@@ -30,29 +32,41 @@ class Button extends StatelessWidget {
     this.width,
     this.fontWeight,
     this.upperCaseFirst=false,
-    this.showLoading=false,
+    this.processing=false,
     this.outlined = false,
+    this.processingText,
+    this.ontaskCompletedText,
   }) : super(key: key);
 
   @override
+  _ButtonState createState() => _ButtonState();
+
+  static void invalidAction()async{
+    print("Invalid Action");
+  }
+}
+
+class _ButtonState extends State<Button> {
+  bool taskCompleted = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height ?? 52,
-      width: width,
+    return AnimatedContainer(
+      duration: Duration(milliseconds:350),
+      height: widget.height ?? 52,
+      width: widget.width,
       padding: EdgeInsets.all(8),
       child: finalButton(),
     );
   }
 
- 
  Widget finalButton(){
    if(isIconButton){
-     return outlined? outlinedIconButton() : iconButton();
+     return widget.outlined? outlinedIconButton() : iconButton();
    }else{
-     return outlined? outlinedNormalButton():normalButton();
+     return widget.outlined? outlinedNormalButton():normalButton();
    }
  }
-
 
  Widget iconButton(){
    return TextButton.icon(
@@ -71,7 +85,6 @@ class Button extends StatelessWidget {
    );
  }
 
-
  Widget outlinedIconButton(){
    return OutlinedButton.icon(
      icon: iconWidget(),
@@ -80,7 +93,7 @@ class Button extends StatelessWidget {
      style: outlinedButtonStyle,
    );
  }
- 
+
  Widget outlinedNormalButton(){
    return OutlinedButton(
      child: label(),
@@ -94,38 +107,42 @@ class Button extends StatelessWidget {
   }
 
   Widget txtWidget() {
+    dynamic _finalText;
+    if(widget.processing) _finalText = widget.processingText;
+    if(taskCompleted) _finalText = widget.ontaskCompletedText;
+    if(_finalText==null) _finalText = widget.text;
+    
       return Txt(
-        text: text,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        maxlines: maxLines ?? 1,
+        text: _finalText,
+        fontSize: widget.fontSize,
+        fontWeight: widget.fontWeight,
+        maxlines: widget.maxLines ?? 1,
         useoverflow: true,
         color: _textColor,
-        upperCaseFirst:upperCaseFirst,
+        upperCaseFirst:widget.upperCaseFirst,
       );
    }
 
    Widget iconWidget(){
     Widget child;
-    if(icon is IconData) child = Icon(icon, color: _textColor, size: fontSize);
-    if(icon is Widget) child = icon;
-    if(showLoading) child = loadingCircle();
+    if(widget.icon is IconData) child = Icon(widget.icon, color: _textColor, size: widget.fontSize);
+    if(widget.icon is Widget) child = widget.icon;
+    if(widget.processing) child = loadingCircle();
     return child;
    }
-
-
 
    Widget loadingCircle(){
     return Material(
      type: MaterialType.circle,
-     color: outlined? Colors.transparent : buttonColor,
+     color: widget.outlined? Colors.transparent : _buttonColor,
      elevation: 0,
      child: SizedBox(
-        height: outlined?22:26,
-        width: outlined?22:26,
+        height: widget.outlined?22:26,
+        width: widget.outlined?22:26,
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: CircularProgressIndicator(
+            strokeWidth: 5,
             valueColor: AlwaysStoppedAnimation(_textColor),
           ),
        ),
@@ -134,19 +151,27 @@ class Button extends StatelessWidget {
   }
 
 
-  static void invalidAction(){
-    print("Invalid Action");
+
+
+  void onPressed()async{  
+    setState(()=>taskCompleted=false);
+    await widget.onPressed();
+    setState(()=>taskCompleted=true);
   }
 
-  
-
- 
 
 
-  bool get isIconButton => icon!=null;
-  Color get _textColor => outlined? buttonColor : textColor;
-  ButtonStyle get normalButtonStyle => TextButton.styleFrom(backgroundColor: buttonColor, shape: shape);
-  ButtonStyle get outlinedButtonStyle => OutlinedButton.styleFrom(shadowColor: buttonColor, onSurface: buttonColor, primary: buttonColor, shape: shape);
-  RoundedRectangleBorder get shape => RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius ??6));
- 
+  bool get isIconButton => widget.icon!=null;
+
+  Color get _textColor => widget.outlined? widget.buttonColor : widget.textColor;
+
+  Color get _darkenButtonColor => HSLColor.fromColor(widget.buttonColor).withLightness(0.45).toColor();
+
+  Color get _buttonColor => widget.processing? _darkenButtonColor : widget.buttonColor;
+
+  ButtonStyle get normalButtonStyle => TextButton.styleFrom(backgroundColor: _buttonColor, shape: shape);
+
+  ButtonStyle get outlinedButtonStyle => OutlinedButton.styleFrom(shadowColor: _buttonColor, onSurface: _buttonColor, primary: _buttonColor, shape: shape);
+
+  RoundedRectangleBorder get shape => RoundedRectangleBorder(borderRadius: BorderRadius.circular(widget.radius ??6));
 }

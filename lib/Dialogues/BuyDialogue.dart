@@ -77,7 +77,7 @@ class _BuyDialgoueState extends State<BuyDialgoue> {
           textColor: Colors.white,
           width: MediaQuery.of(context).size.width/2.75,
           buttonColor: isConfirmOption? Colorz.timerBlue:Colorz.complexDrawerBlueGrey,
-          showLoading: isLoading && isConfirmOption,
+          processing: isLoading && isConfirmOption,
           onPressed: isConfirmOption? confirmFn : closeFn,
         );
       }).toList(),

@@ -3,6 +3,7 @@ import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/Clone.dart';
 import 'package:fluttership/UI/Account.dart';
 import 'package:fluttership/UI/AssemblingAnalyticsPage.dart';
+import 'package:fluttership/UI/ButtonExample.dart';
 import 'package:fluttership/UI/ExpandedBottomNav.dart';
 import 'package:fluttership/UI/GoogleSearchPage.dart';
 import 'package:fluttership/UI/ImgExample.dart';
@@ -113,7 +114,9 @@ class _HomePageState extends State<HomePage> {
     Clone(ExpandedBottomNavigationBarPage(), Colorz.complexDrawerBlack, Icons.dns, "Expanded Bottom Navigation Bar", "A custom bottom navigation bar with additional menus"),
     Clone(RichCalculatorPage(), Colors.black, Icons.calculate, "Rich Calculator", "A Non functioning calculator ui"),
     Clone(ProductDetailsPage(), Colors.red, Icons.computer, "Product Details", "An Imaginary UI of Apple Macbook Customization Page"),    
-    Clone(ImgExample(), Colors.green, Icons.photo, "Img", "Example use case of Img widget"),    
+    Clone(ImgExample(), Colors.green, Icons.photo, "Img", "Example use case of Img widget"),
+    Clone(ButtonExample(), Colors.deepPurple, Icons.touch_app, "Buttons", "Example use case of Button Widget"),
+
   ];
 
 
