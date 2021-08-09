@@ -66,4 +66,51 @@ class Widgets {
       // showToast("No destination page found", context);
     }
   }
+
+
+static String toDateTime(int createdAt) {
+     return '${toDate(createdAt)} @ ${toTime(createdAt)}';
+}
+
+  static  String toDate(int createdAt) {
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(createdAt);
+    int day = date.day;
+    int _month = date.month;
+    String month = toMonth(_month);
+    int _year = date.year;
+    String year = _year == DateTime.now().year? '':'$_year'.substring(2,4);
+    return '$day $month $year';
+  }
+
+  
+
+
+    static String toTime(int createdAt) {
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(createdAt);
+    int hour = date.hour > 12 ? (date.hour - 12) : date.hour;
+    String minutes = date.minute < 10 ? '0${date.minute}' : '${date.minute}';
+    String amPm = date.hour >= 12 ? "PM" : "AM";
+    return '$hour:$minutes $amPm';
+  }
+
+
+  static  String toMonth(int month){
+   return month>0 ? months[month-1] : '$month';
+  }
+      static const List<String>months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
+      
+
 }

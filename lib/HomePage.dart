@@ -4,9 +4,11 @@ import 'package:fluttership/Models/Clone.dart';
 import 'package:fluttership/UI/Account.dart';
 import 'package:fluttership/UI/AssemblingAnalyticsPage.dart';
 import 'package:fluttership/UI/ButtonExample.dart';
+import 'package:fluttership/UI/CustomStepper.dart';
 import 'package:fluttership/UI/ExpandedBottomNav.dart';
 import 'package:fluttership/UI/GoogleSearchPage.dart';
 import 'package:fluttership/UI/ImgExample.dart';
+import 'package:fluttership/UI/InkkExample.dart';
 import 'package:fluttership/UI/InterLacedDashBoard.dart';
 import 'package:fluttership/UI/ProductDetailsPage.dart';
 import 'package:fluttership/UI/RichCalculator.dart';
@@ -116,7 +118,9 @@ class _HomePageState extends State<HomePage> {
     Clone(ProductDetailsPage(), Colors.red, Icons.computer, "Product Details", "An Imaginary UI of Apple Macbook Customization Page"),    
     Clone(ImgExample(), Colors.green, Icons.photo, "Img", "Example use case of Img widget"),
     Clone(ButtonExample(), Colors.deepPurple, Icons.touch_app, "Buttons", "Example use case of Button Widget"),
-
+    Clone(InkkExample(), Colors.blue, Icons.touch_app, "Inkk", "Example use case of Inkk Widget"),
+    Clone(StepperExample(), Colors.green, Icons.format_list_numbered, "Custom Stepper", "Example use case of custom stepper widget design"),
+    
   ];
 
 
