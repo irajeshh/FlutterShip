@@ -10,6 +10,7 @@ import 'package:fluttership/UI/GoogleSearchPage.dart';
 import 'package:fluttership/UI/ImgExample.dart';
 import 'package:fluttership/UI/InkkExample.dart';
 import 'package:fluttership/UI/InterLacedDashBoard.dart';
+import 'package:fluttership/UI/LoadersPage.dart';
 import 'package:fluttership/UI/ProductDetailsPage.dart';
 import 'package:fluttership/UI/RichCalculator.dart';
 import 'package:fluttership/UI/SendMoneyPage.dart';
@@ -120,6 +121,7 @@ class _HomePageState extends State<HomePage> {
     Clone(ButtonExample(), Colors.deepPurple, Icons.touch_app, "Buttons", "Example use case of Button Widget"),
     Clone(InkkExample(), Colors.blue, Icons.touch_app, "Inkk", "Example use case of Inkk Widget"),
     Clone(StepperExample(), Colors.green, Icons.format_list_numbered, "Custom Stepper", "Example use case of custom stepper widget design"),
+    Clone(LoadersPage(), Colors.pink, Icons.sports_basketball,"Multiple Loaders", "Example use case of different type of loading widgets"),
     
   ];
 
