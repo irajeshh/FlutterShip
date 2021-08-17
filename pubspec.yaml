@@ -6,7 +6,8 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0" #I don't use nullsafety to use nullsaftety replace 2.7.0 with 2.12.0
+  sdk: ">=2.7.0 <3.0.0" 
+  #I̶ d̶o̶n̶'̶t̶ u̶s̶e̶ n̶u̶l̶l̶s̶a̶f̶e̶t̶y̶ t̶o̶ u̶s̶e̶ n̶u̶l̶l̶s̶a̶f̶t̶e̶t̶y̶ r̶e̶p̶l̶a̶c̶e̶ 2̶.̶7̶.̶0̶ w̶i̶t̶h̶ 2̶.̶1̶2̶.̶0̶
 
 dependencies:
   flutter:

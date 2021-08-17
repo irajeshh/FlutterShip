@@ -14,3 +14,8 @@ part of './Constants.dart';
  enum OptionType {
    Memory, Storage, Ethernet, FinalCutPro, LogicPro
  }
+
+
+ enum LoaderType {
+   dribbbleBal, carTire
+ }
