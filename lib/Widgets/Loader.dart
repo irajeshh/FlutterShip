@@ -88,7 +88,8 @@ class _LoaderState extends State<Loader> with TickerProviderStateMixin {
     boxShadow: [BoxShadow(color: shadowColor,blurRadius: 5,spreadRadius: 5)]
   );
   
-    return Opacity(
+    return AnimatedOpacity(
+      duration: shadowDuration,
               opacity: shadowOpacity,
               child: AnimatedContainer(
                 height: shadowHeight,
