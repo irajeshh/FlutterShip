@@ -6,7 +6,6 @@ class Loader extends StatefulWidget {
   final bool center;
   final double size;
   final double padding;
-  final LoaderType type;
   const Loader(
       {Key key,
       this.size = 50,
@@ -14,52 +13,31 @@ class Loader extends StatefulWidget {
       this.iconColor,
       this.center = true,
       this.padding,
-      this.type = LoaderType.dribbbleBal,
   })
       : super(key: key);
   _LoaderState createState() => new _LoaderState();
 }
 
 class _LoaderState extends State<Loader> with TickerProviderStateMixin {
-  AnimationController animationController;
-  Animation ballBounce;
-  Animation shadowFade;
-  AnimationController bounceAnimationController;
-  bool short = false;
+  AnimationController rotationController;
+  AnimationController bouncingController;
+
+  Animation bouncingAnimation;
+  Animation shadowAnimation;
+
+  bool touchedFloor = false;
 
   @override
   void initState() {
-    super.initState();
-    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 150));
-    animationController.forward();
-    animationController.addListener((){
-     if(animationController.status == AnimationStatus.completed) setState(()=>animationController.repeat());      
-    });
-
-
-
-    bounceAnimationController = AnimationController(vsync:this,duration: Duration(milliseconds: 1000));
-    bounceAnimationController.addListener(()=>setState((){}));
-
-    bounceAnimationController.addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              bounceAnimationController.reverse();
-              short = !short;
-            } else if (status == AnimationStatus.dismissed) {
-              short = !short;
-              bounceAnimationController.forward(from: 0.0);
-            }
-          });
-    ballBounce = Tween(begin: Offset(0, 0), end: Offset(0, -10.0)).animate(bounceAnimationController);
-    shadowFade = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(curve: Interval(0.4, 1.0), parent: bounceAnimationController));
-    bounceAnimationController.forward();
+  startAnimation();
+  super.initState();    
   }
 
 
   @override
   void dispose() { 
-    animationController.dispose();
-    bounceAnimationController.dispose();
+    rotationController.dispose();
+    bouncingController.dispose();
     super.dispose();
   }
 
@@ -81,62 +59,94 @@ class _LoaderState extends State<Loader> with TickerProviderStateMixin {
   }
 
   Widget bouncingWidget(){
+
     return Transform.translate(
-             offset: ballBounce.value,
-             child: rotatingWidget(),
-            );
+     offset: bouncingAnimation.value,
+     child: rotatingWidget(),
+   );
   }
 
 
   Widget rotatingWidget(){
     return AnimatedBuilder(
-      animation: animationController,
-      child: loadingWidget(),
+      animation: rotationController,
+      child: ballWidget(),
       builder: (BuildContext context, Widget _widget) {
         return new Transform.rotate(
-          angle: animationController.value,
+          angle: rotationController.value,
           child: _widget,
         );
       },
     );
   }
 
-  Widget loadingWidget(){
-    switch (widget.type) {
-      
-      case LoaderType.dribbbleBal:
-        return Image.asset(Assets.dribbbleBal,height: widget.size);
-        break;
-      case LoaderType.carTire:
-        return Image.asset(Assets.carTire,height: widget.size);
-        break;
-      default: return Icon(Icons.sync, size: widget.size);
-    }
+  Widget ballWidget(){
+    //replace dribbbleBal with carTire when you are doing a vehicle related project
+    return Image.asset(Assets.dribbbleBal,height: widget.size);
   }
 
   Widget shadowWidget(){
-    Color color =  widget.iconColor ?? Colors.black.withOpacity(short?0.3:0.1);
+   double shadowOpacity = shadowAnimation.value;
+   Color shadowColor =  widget.iconColor ?? Colors.black.withOpacity(touchedFloor?0.3:0.1);
+   double shadowHeight = touchedFloor? 0.005 : 0.25;
+   double shadowWidth = widget.size/(touchedFloor? 5 : 2.5);
+   BoxDecoration shadowDecoration = BoxDecoration(
+    color: shadowColor,
+    borderRadius: BorderRadius.circular(360),
+    boxShadow: [BoxShadow(color: shadowColor,blurRadius: 5,spreadRadius: 5)]
+  );
+  
     return Opacity(
-              opacity: shadowFade.value,
+              opacity: shadowOpacity,
               child: AnimatedContainer(
-                height: short? 0.005 : 0.25,
-                width: widget.size/(short? 5 : 2.5),
-                duration: Duration(
-                 milliseconds: 1000,
-                ),
-                decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(360),
-                color: color,
-                boxShadow: [
-                  BoxShadow(
-                    color: color,
-                    blurRadius: 5,
-                    spreadRadius: 5,
-                  )
-                ],
-                ),
+                height: shadowHeight,
+                width: shadowWidth,
+                duration: shadowDuration,
+                decoration: shadowDecoration,
               ),
             );
   }
+
+
+  void startAnimation(){
+    rotationController = AnimationController(vsync: this, duration: rotationDuration);
+    bouncingController = AnimationController(vsync:this,duration: shadowDuration);
+
+    bouncingAnimation = Tween(begin: Offset(0, 0), end: Offset(0, -10.0)).animate(bouncingController);
+    shadowAnimation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(curve: Interval(0.4, 1.0), parent: bouncingController));
+
+
+    rotationController.addListener(()=>setState((){}));
+    bouncingController.addListener(()=>setState((){}));
+
+
+    rotationController.forward();
+    bouncingController.forward();
+
+    rotationController.addStatusListener((status)async{
+     if(status == AnimationStatus.completed){
+      await rotationController.repeat();    
+     }
+    });
+
+
+
+    bouncingController.addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              bouncingController.reverse();
+              touchedFloor = !touchedFloor;
+            } else if (status == AnimationStatus.dismissed) {
+              touchedFloor = !touchedFloor;
+              bouncingController.forward(from: 0.0);
+            }
+          });
+
+
+  }
+
+
+
+  static const Duration shadowDuration = Duration(milliseconds: 1000);
+  static const Duration rotationDuration = Duration(milliseconds: 150);
 
 }

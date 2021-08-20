@@ -15,7 +15,3 @@ part of './Constants.dart';
    Memory, Storage, Ethernet, FinalCutPro, LogicPro
  }
 
-
- enum LoaderType {
-   dribbbleBal, carTire
- }
