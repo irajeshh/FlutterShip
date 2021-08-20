@@ -1,18 +1,10 @@
 part of './Widgets.dart';
 
 class Loader extends StatefulWidget {
-  final Color backgroundColor;
-  final Color iconColor;
-  final bool center;
   final double size;
-  final double padding;
   const Loader(
       {Key key,
       this.size = 50,
-      this.backgroundColor,
-      this.iconColor,
-      this.center = true,
-      this.padding,
   })
       : super(key: key);
   _LoaderState createState() => new _LoaderState();
@@ -87,7 +79,7 @@ class _LoaderState extends State<Loader> with TickerProviderStateMixin {
 
   Widget shadowWidget(){
    double shadowOpacity = shadowAnimation.value;
-   Color shadowColor =  widget.iconColor ?? Colors.black.withOpacity(touchedFloor?0.3:0.1);
+   Color shadowColor = Colors.black.withOpacity(touchedFloor?0.3:0.1);
    double shadowHeight = touchedFloor? 0.005 : 0.25;
    double shadowWidth = widget.size/(touchedFloor? 5 : 2.5);
    BoxDecoration shadowDecoration = BoxDecoration(
