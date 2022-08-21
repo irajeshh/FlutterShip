@@ -39,4 +39,7 @@ class Colorz {
   //buttonExample
   static const Color buttonExampleCanvas = Color(0xfff3f6ff);
   static const Color buttonSampleColor = Color(0xff7c2ae8);
+
+  ///Expandile
+  static const Color iphone12Purple = Color(0xffB8AFE6);
 }
