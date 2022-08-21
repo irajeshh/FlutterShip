@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:async/async.dart';
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -22,6 +24,7 @@ part './Avatar.dart';
 part './CrossFade.dart';
 part './ColorTile.dart';
 part './Button.dart';
+part './Expandile.dart';
 
 ///[UPCOMING WIDGETS]
 // part './RichTxt.dart';
@@ -112,6 +115,7 @@ class Widgets {
     );
   }
 
+  ///This will return the darken color of the given value
   static Color darkenColor(Color color, double value) =>
       HSLColor.fromColor(color).withLightness(value).toColor();
 
@@ -160,13 +164,22 @@ class Widgets {
     );
   }
 
-  static Widget arrow({Color? color}) {
-    color = color ?? Colors.grey.shade200;
-    return Container(
-      child: Icon(Icons.chevron_right, size: 18, color: color),
+  ///An [Ios] style tiny arrow widget, which can be used on [ListTile] widgets with customizations
+  static Widget arrow({Color? color, bool back = false, double angle = 90}) {
+    final Color _color = color ?? Colors.grey.shade200;
+
+    return DecoratedBox(
       decoration: BoxDecoration(
-        color: color.withOpacity(0.15),
+        color: _color.withOpacity(0.15),
         shape: BoxShape.circle,
+      ),
+      child: Transform.rotate(
+        angle: angle * math.pi / 180,
+        child: Icon(
+          back ? Icons.chevron_left : Icons.chevron_right,
+          size: 18,
+          color: _color,
+        ),
       ),
     );
   }

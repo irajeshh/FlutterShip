@@ -6,6 +6,7 @@ import 'package:fluttership/UI/AssemblingAnalyticsPage.dart';
 import 'package:fluttership/UI/ButtonExample.dart';
 import 'package:fluttership/UI/CustomStepper.dart';
 import 'package:fluttership/UI/ExpandedBottomNav.dart';
+import 'package:fluttership/UI/ExpandileExample.dart';
 import 'package:fluttership/UI/GoogleSearchPage.dart';
 import 'package:fluttership/UI/ImgExample.dart';
 import 'package:fluttership/UI/InkkExample.dart';
@@ -131,6 +132,7 @@ class _HomePageState extends State<HomePage> {
         "Example use case of custom stepper widget design"),
     Clone(DribbbleBallExamplePage(), Colors.pink, Icons.sports_basketball, "Dribbble Ball",
         "Example use case of dribbble ball type of loading widgets"),
+    Clone(ExpandileExamplePage(), Colorz.iphone12Purple, Icons.expand_circle_down_outlined, 'Expandile example', 'To use expadile widget')
   ];
 
   void clearSearch() {
