@@ -25,38 +25,7 @@ part './CrossFade.dart';
 part './ColorTile.dart';
 part './Button.dart';
 part './Expandile.dart';
-
-///[UPCOMING WIDGETS]
-// part './RichTxt.dart';
-// part './AppLogo.dart';
-// part './AppName.dart';
-// part './Tile.dart';
-// part './LeftRight.dart';
-// part './ImgUploader.dart';
-// part './ImgSlideshow.dart';
-
-// part 'Logger.dart';
-// part './Timer.dart';
-// part './TxtField.dart';
-// part './CustomerTile.dart';
-// part './ViewImg.dart';
-// part './ColoredIcon.dart';
-// part './LoadingPage.dart';
-// part './SearchCard.dart';
-// part './Adder.dart';
-// part './SelectionSteps.dart';
-// part './DottedLine.dart';
-// part './CallButton.dart';
-// part './ShareThisApp.dart';
-// part './Shimmer.dart';
-// part './Empty.dart';
-// part './HelpTile.dart';
-// part './ImgSvg.dart';
-// part './WhatsappChip.dart';
-// part './CardButton.dart';
-// part './DBCard.dart';
-// part './ShareButton.dart';
-// part './IconLabel.dart';
+part './DoubleCard.dart';
 
 @Deprecated('Use Widgets.instance')
 class Common {

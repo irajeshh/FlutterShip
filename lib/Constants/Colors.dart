@@ -42,4 +42,7 @@ class Colorz {
 
   ///Expandile
   static const Color iphone12Purple = Color(0xffB8AFE6);
+
+  ///DoubleCard
+  static const Color doubleCardBlue = Color(0xff045bd8);
 }
