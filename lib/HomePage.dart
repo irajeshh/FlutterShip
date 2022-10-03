@@ -17,6 +17,7 @@ import 'package:fluttership/UI/ProductDetailsPage.dart';
 import 'package:fluttership/UI/RichCalculator.dart';
 import 'package:fluttership/UI/SendMoneyPage.dart';
 import 'package:fluttership/UI/TimerDrawerPage.dart';
+import 'package:fluttership/Widgets/SearchBar.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
 
 import 'UI/ComplexDrawerPage.dart';
@@ -51,6 +52,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget searchField() {
+    return SearchBar(
+      onChanged: (z) => setState(() => query = z.toLowerCase()),
+    );
     return Padding(
       padding: const EdgeInsets.only(top: 28, bottom: 8),
       child: Card(
@@ -133,9 +137,10 @@ class _HomePageState extends State<HomePage> {
         "Example use case of custom stepper widget design"),
     Clone(DribbbleBallExamplePage(), Colors.pink, Icons.sports_basketball, "Dribbble Ball",
         "Example use case of dribbble ball type of loading widgets"),
-    Clone(ExpandileExamplePage(), Colorz.iphone12Purple, Icons.expand_circle_down_outlined, 'Expandile example', 'To use expadile widget'),
-    Clone(DoubleCardExample(), Colorz.doubleCardBlue, Icons.layers, 'Double card example page', 'To use the double card widget'),
-    
+    Clone(ExpandileExamplePage(), Colorz.iphone12Purple, Icons.expand_circle_down_outlined,
+        'Expandile example', 'To use expadile widget'),
+    Clone(DoubleCardExample(), Colorz.doubleCardBlue, Icons.layers, 'Double card example page',
+        'To use the double card widget'),
   ];
 
   void clearSearch() {
