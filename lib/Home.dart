@@ -11,22 +11,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      ///Example
-      ///YourName: My Name Is On 28th Line
-      appBar: greenAppBar(),
-      body: whiteBody(),
-      floatingActionButton: newMsgButton(),
+      appBar: appBar(),
+      body: body(),
+      floatingActionButton: floatingActionButton(),
     );
   }
 
-  AppBar greenAppBar() {
+  AppBar appBar() {
     return AppBar(
       backgroundColor: Colors.green.shade900,
       title: Text('WhatsApp'),
     );
   }
 
-  Widget whiteBody() {
+  Widget body() {
     return Center(
       child: Text(
         'Loading chats...',
@@ -38,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget newMsgButton() {
+  Widget floatingActionButton() {
     return FloatingActionButton(
       onPressed: onPressed,
       backgroundColor: Colors.green,
