@@ -46,3 +46,36 @@ class Colorz {
   ///DoubleCard
   static const Color doubleCardBlue = Color(0xff045bd8);
 }
+
+class TeslaColorz {
+  ///Primary Colors
+  static const List<Color> backdropColors = [
+    Colors.black,
+    Color(0xFF003073),
+    Color(0xFF003073),
+    Color(0xFF1E281E),
+    Color(0xFF1E281E),
+    Colors.black26,
+  ];
+
+  ///Control centre colors
+  static const Color iconBlack = Color(0xff101118);
+  static const Color disabledGrey = Color(0xff1e1f28);
+
+  static const Color headLightRed = Color(0xfffb1e4d);
+  static const Color microphoneRed = Color(0xffff0000);
+  static const Color chargingBlue = Color(0xff038efe);
+
+  ///Sorted by darkest color to the lightest color
+  static const List<Color> chargingWaveColors = [
+    Color(0xff0845d5),
+    Color(0xff0558f7),
+    Color(0xff0977d4),
+    Color(0xff0491fe),
+  ];
+
+  static const List<Color> lockerColors = <Color>[
+    Color(0xff6b67fa),
+    Color(0xff4844f9),
+  ];
+}

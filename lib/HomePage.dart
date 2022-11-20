@@ -16,6 +16,7 @@ import 'package:fluttership/UI/DribbbleBalExample.dart';
 import 'package:fluttership/UI/ProductDetailsPage.dart';
 import 'package:fluttership/UI/RichCalculator.dart';
 import 'package:fluttership/UI/SendMoneyPage.dart';
+import 'package:fluttership/UI/Tesla/Page.dart';
 import 'package:fluttership/UI/TimerDrawerPage.dart';
 import 'package:fluttership/Widgets/SearchBar.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
@@ -141,6 +142,9 @@ class _HomePageState extends State<HomePage> {
         'Expandile example', 'To use expadile widget'),
     Clone(DoubleCardExample(), Colorz.doubleCardBlue, Icons.layers, 'Double card example page',
         'To use the double card widget'),
+    Clone(TeslaCarAppPage(), Colorz.complexDrawerBlack, Icons.car_rental, 'Tesla car control',
+        'Remote application model to control a tesla car for educational purpose only'),
+    
   ];
 
   void clearSearch() {

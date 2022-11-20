@@ -97,6 +97,7 @@ class Widgets {
   static const Duration duration = Duration(milliseconds: 350);
   static const Duration duration1Sec = Duration(seconds: 1);
   static const Duration duration2Sec = Duration(seconds:2);
+  static const Duration duration3Sec = Duration(seconds:3);
 
   static const Curve curve = Curves.easeIn;
 

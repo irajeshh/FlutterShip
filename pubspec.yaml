@@ -17,6 +17,7 @@ dependencies:
   image_cropper: ^3.0.1
   image_picker: ^0.8.6
   intl: ^0.17.0
+  wave: ^0.2.2
   
 dev_dependencies:
   flutter_test:
