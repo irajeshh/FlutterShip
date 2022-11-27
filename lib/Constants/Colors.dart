@@ -4,7 +4,7 @@ part of './Constants.dart';
 //in case you like it do tht
 
 class Colorz {
-  static const Color primaryColor = Color(0xff5b60ec);
+  static const Color primaryColor = Color(0xFF4232EA);
   static const Color timerBlue = Color(0xff1c77dd);
 
   static const Color backgroundBlue = Color(0xff1b81f1);

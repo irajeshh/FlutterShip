@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class DribbbleBallExamplePage extends StatefulWidget {
   const DribbbleBallExamplePage({Key? key}) : super(key: key);

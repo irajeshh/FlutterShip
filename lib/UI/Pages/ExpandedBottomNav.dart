@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Models/CDM.dart';
-import 'package:fluttership/Models/IconLabel.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Models/CDM.dart';
+import 'package:fluttershipp/Models/IconLabel.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class ExpandedBottomNavigationBarPage extends StatefulWidget {
   const ExpandedBottomNavigationBarPage({Key? key}) : super(key: key);

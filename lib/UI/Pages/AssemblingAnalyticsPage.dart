@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Models/Currency.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Models/Currency.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class AssemblingAnalyticsPage extends StatefulWidget {
   const AssemblingAnalyticsPage({Key? key}) : super(key: key);
@@ -111,9 +111,7 @@ class _AssemblingAnalyticsPageState extends State<AssemblingAnalyticsPage> {
     return AnimatedContainer(
       duration: duration,
       color: showHorizontalCircleLabelsAndBackground ? Colors.grey.shade900 : Colors.black,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-       children: [
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         horizontalCircleListView(),
         horizontalCircleListView(isLeft: false),
       ]),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class ScrollerSamplePage extends StatefulWidget {
   const ScrollerSamplePage({Key? key}) : super(key: key);

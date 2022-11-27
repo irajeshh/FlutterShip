@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 import 'package:wave/wave.dart';
 import 'package:wave/config.dart';
 part './CarSegment.dart';
@@ -62,8 +62,10 @@ class _TeslaCarAppPageState extends State<TeslaCarAppPage> {
           },
         ),
         Positioned(
-          top: 20,
-          child: Widgets.closeButton(color: Colors.white,)),
+            top: 20,
+            child: Widgets.closeButton(
+              color: Colors.white,
+            )),
       ],
     );
   }

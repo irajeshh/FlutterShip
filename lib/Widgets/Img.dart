@@ -1,17 +1,19 @@
-part of './Widgets.dart';
+// ignore_for_file: public_member_api_docs, avoid_dynamic_calls
+
+part of 'Widgets.dart';
 
 class Img extends StatefulWidget {
-  final String imgUrl;
+  final String? imgUrl;
   final double? height;
   final double? width;
   final Widget? placeHolder;
   final Widget? errorWidget;
   final BoxFit? fit;
   final Alignment? alignment;
-  final VoidCallback? onTap;
+  final Function? onTap;
   final Widget? child;
   final double? outterPadding;
-  final double radius;
+  final double? radius;
   final Color? imgColor;
   final double? elevation;
   final bool enableRippleEffect;
@@ -27,7 +29,7 @@ class Img extends StatefulWidget {
     this.onTap,
     this.child,
     this.outterPadding,
-    this.radius = 8,
+    this.radius,
     this.imgColor,
     this.elevation,
     this.enableRippleEffect = true,
@@ -43,26 +45,28 @@ class _ImgState extends State<Img> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    BorderRadius borderRadius = BorderRadius.circular(widget.radius,);
+    final BorderRadius borderRadius = BorderRadius.circular(widget.radius ?? 8);
     return Inkk(
-      onTap: widget.onTap ?? viewImageFn,
+      onTap: onTap,
+      radius: widget.radius,
       child: Container(
         height: widget.height,
         width: widget.width,
         padding: EdgeInsets.all(widget.outterPadding ?? 0),
         child: Material(
-            elevation: widget.elevation ?? 1.5,
-            borderRadius: borderRadius,
-            clipBehavior: Clip.antiAlias,
-            color: widget.imgColor,
-            child: imgWidget()),
+          elevation: widget.elevation ?? 1.5,
+          borderRadius: borderRadius,
+          clipBehavior: Clip.antiAlias,
+          color: widget.imgColor,
+          child: widget.imgUrl == null ? null : imgWidget(),
+        ),
       ),
     );
   }
 
   Widget imgWidget() {
-    Widget _imgWidget = CachedNetworkImage(
-      imageUrl: widget.imgUrl,
+    final Widget _imgWidget = CachedNetworkImage(
+      imageUrl: widget.imgUrl!,
       fit: widget.fit ?? BoxFit.fill,
       height: widget.height,
       width: widget.width,
@@ -73,51 +77,45 @@ class _ImgState extends State<Img> with AutomaticKeepAliveClientMixin {
       clipBehavior: Clip.antiAlias,
       alignment: widget.alignment ?? Alignment.center,
       children: <Widget>[
-        widget.enableRippleEffect
-            ? Inkk(
-                onTap: widget.onTap ?? () {},
+        if (widget.enableRippleEffect) Inkk(
+                onTap: onTap,
                 radius: widget.radius,
                 child: _imgWidget,
-              )
-            : _imgWidget,
+              ) else _imgWidget,
         if (widget.child != null) widget.child!,
       ],
     );
   }
 
-  Widget placeholder(c, s, e) {
-    return widget.placeHolder ?? background(false);
+  Widget placeholder(BuildContext c, String s, DownloadProgress d) {
+    return widget.placeHolder ?? background(error: false);
   }
 
-  Widget errorWidget(c, s, e) {
-    return widget.errorWidget ?? background(true);
+  Widget errorWidget(BuildContext c, String s, dynamic e) {
+    return widget.errorWidget ?? background(error: true);
   }
 
-  Widget background(bool error) {
-    return Container(
+  Widget background({required bool error}) {
+    return SizedBox(
       height: widget.height,
       width: widget.width,
-      child: error ? Icon(Icons.error, size: 100) : CircularProgressIndicator(),
+      child: error
+          ? const Icon(Icons.photo, size: 100)
+          : Shimmer(
+              height: widget.height,
+              width: widget.width,
+              verticalPadding: 0,
+              horizontalPadding: 0,
+              radius: widget.radius??8.0,),
     );
   }
 
-  void viewImageFn() {
-    Widgets.push(
-        Scaffold(
-          backgroundColor: Colors.black,
-          body: Center(
-            child: CachedNetworkImage(
-              imageUrl: widget.imgUrl,
-              width: double.maxFinite,
-              placeholder: (
-                c,
-                s,
-              ) =>
-                  placeholder(c, s, s),
-              errorWidget: errorWidget,
-            ),
-          ),
-        ),
-        context);
+  void onTap() {
+    debugPrint(widget.imgUrl);
+    if (widget.onTap != null) {
+      widget.onTap!();
+    } else {
+      Widgets.push(ViewImgPage(url: widget.imgUrl!), context,);
+    }
   }
 }

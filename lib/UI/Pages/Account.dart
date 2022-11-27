@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -136,7 +136,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget addButton() {
-    return Widgets.closeButton(color: Colorz.accountPurple, iconColor: Colors.white, opacity:1);
+    return Widgets.closeButton(color: Colorz.accountPurple, iconColor: Colors.white, opacity: 1);
   }
 
   // Widget fab(){

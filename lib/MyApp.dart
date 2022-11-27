@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Scroll.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Scroll.dart';
 import 'package:oktoast/oktoast.dart';
 import 'UI/Home/Home.dart';
 

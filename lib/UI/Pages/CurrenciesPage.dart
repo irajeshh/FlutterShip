@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Models/Currency.dart';
-import 'package:fluttership/Models/IconLabel.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Models/Currency.dart';
+import 'package:fluttershipp/Models/IconLabel.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class CurrenciesPage extends StatefulWidget {
   const CurrenciesPage({Key? key}) : super(key: key);

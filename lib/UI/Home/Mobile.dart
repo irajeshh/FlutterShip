@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Models/Clone.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Models/Clone.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../Widgets/SearchBar.dart';
 import '../../Widgets/Widgets.dart';
@@ -16,7 +17,7 @@ class MobileHomePage extends StatefulWidget {
 class _MobileHomePageState extends State<MobileHomePage> {
   final TextEditingController searchController = TextEditingController();
   String query = '';
-  bool useGridView = true;
+  bool useGridView = false;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +45,8 @@ class _MobileHomePageState extends State<MobileHomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              styleButton(),
               searchField(),
+              styleButton(),
             ],
           ),
         ),
@@ -64,12 +65,12 @@ class _MobileHomePageState extends State<MobileHomePage> {
 
   Widget clonesResult() {
     return Expanded(
-      child: CrossFade(
-        useCenter: false,
-        hiddenChild: gridViewBuilder(),
-        show: useGridView,
-        child: listViewBuilder(),
-      ),
+      child: ResponsiveBuilder(builder: (c, s) {
+        if (s.localWidgetSize.width < 400) {
+          useGridView = true;
+        }
+        return useGridView ? gridViewBuilder() : listViewBuilder();
+      }),
     );
   }
 
@@ -152,6 +153,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Txt(
                   text: clone.title,
+                  textAlign: TextAlign.center,
                   maxLines: 1,
                   fontSize: 18,
                   color: clone.color,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 ///An animated search bar which will shrink and expand itself on clicking
 class SearchBar extends StatefulWidget {

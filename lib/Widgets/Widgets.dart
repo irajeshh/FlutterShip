@@ -1,17 +1,18 @@
 import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:fluttership/Models/IconLabel.dart';
-// import 'package:fluttership/Models/Logg.dart';
-// import 'package:fluttership/Models/RichString.dart';
-// import 'package:fluttership/Models/SelectionStep.dart';
+// import 'package:fluttershipp/Models/IconLabel.dart';
+// import 'package:fluttershipp/Models/Logg.dart';
+// import 'package:fluttershipp/Models/RichString.dart';
+// import 'package:fluttershipp/Models/SelectionStep.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:fluttership/Repos/Img.dart';
-import 'package:fluttership/Constants/Constants.dart';
+// import 'package:fluttershipp/Repos/Img.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
 import 'package:intl/intl.dart';
 import 'package:oktoast/oktoast.dart' as oktoast;
+import 'package:responsive_builder/responsive_builder.dart';
 part './Loader.dart';
 part './Txt.dart';
 part './Scroller.dart';
@@ -23,6 +24,8 @@ part './ColorTile.dart';
 part './Button.dart';
 part './Expandile.dart';
 part './DoubleCard.dart';
+part './Shimmer.dart';
+part './ViewImg.dart';
 
 @Deprecated('Use Widgets.instance')
 class Common {
@@ -86,17 +89,26 @@ class Widgets {
     );
   }
 
-  static Widget closeButton({Color? iconColor, required Color color,double? opacity}) {
-    return Container(
-      padding: EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: color.withOpacity(opacity ?? 0.2),
-        shape: BoxShape.circle,
-      ),
-      child: CloseButton(
-        color: iconColor ?? color,
-      ),
-    );
+  static Widget closeButton({Color? iconColor, required Color color, double? opacity}) {
+    return ResponsiveBuilder(builder: (c, s) {
+      final bool show = s.localWidgetSize.width < 480;
+      return AnimatedOpacity(
+        duration: Widgets.duration,
+        opacity: show ? 1 : 0,
+        child: Container(
+          padding: EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: color.withOpacity(opacity ?? 0.2),
+            shape: BoxShape.circle,
+          ),
+          child: !show
+              ? null
+              : CloseButton(
+                  color: iconColor ?? color,
+                ),
+        ),
+      );
+    });
   }
 
   ///This will return the darken color of the given value

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 ///Example page to use [DoubleCard] widget
 class DoubleCardExample extends StatelessWidget {
@@ -35,10 +35,10 @@ class DoubleCardExample extends StatelessWidget {
   }
 
   static final List<Color> colors = [
-      Colorz.doubleCardBlue,
-      Colors.teal,
-      Colorz.complexDrawerBlueGrey,
-      Colors.pink,
-      Colors.amber,
-    ];
+    Colorz.doubleCardBlue,
+    Colors.teal,
+    Colorz.complexDrawerBlueGrey,
+    Colors.pink,
+    Colors.amber,
+  ];
 }

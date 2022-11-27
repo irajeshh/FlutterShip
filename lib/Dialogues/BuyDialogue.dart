@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class BuyDialgoue extends StatefulWidget {
   const BuyDialgoue({Key? key}) : super(key: key);
@@ -76,7 +76,7 @@ class _BuyDialgoueState extends State<BuyDialgoue> {
           textColor: Colors.white,
           width: MediaQuery.of(context).size.width / 2.75,
           buttonColor: isConfirmOption ? Colorz.timerBlue : Colorz.complexDrawerBlueGrey,
-          processingText: isConfirmOption? "Confirming...":"Cancelling...",
+          processingText: isConfirmOption ? "Confirming..." : "Cancelling...",
           onPressed: isConfirmOption ? confirmFn : closeFn,
         );
       }).toList(),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Dialogues/BuyDialogue.dart';
-import 'package:fluttership/Models/ProductOption.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Dialogues/BuyDialogue.dart';
+import 'package:fluttershipp/Models/ProductOption.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({Key? key}) : super(key: key);

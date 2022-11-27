@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Models/CustomStep.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Models/CustomStep.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class StepperExample extends StatefulWidget {
   const StepperExample({Key? key}) : super(key: key);

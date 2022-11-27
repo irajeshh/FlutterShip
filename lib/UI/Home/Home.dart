@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Models/Clone.dart';
-import 'package:fluttership/UI/Home/Mobile.dart';
-import 'package:fluttership/UI/Home/Web.dart';
-import 'package:fluttership/UI/Pages/Account.dart';
-import 'package:fluttership/UI/Pages/AssemblingAnalyticsPage.dart';
-import 'package:fluttership/UI/Pages/ButtonExample.dart';
-import 'package:fluttership/UI/Pages/CustomStepper.dart';
-import 'package:fluttership/UI/Pages/DoubleCardExample.dart';
-import 'package:fluttership/UI/Pages/ExpandedBottomNav.dart';
-import 'package:fluttership/UI/Pages/ExpandileExample.dart';
-import 'package:fluttership/UI/Pages/GoogleSearchPage.dart';
-import 'package:fluttership/UI/Pages/ImgExample.dart';
-import 'package:fluttership/UI/Pages/InkkExample.dart';
-import 'package:fluttership/UI/Pages/InterLacedDashBoard.dart';
-import 'package:fluttership/UI/Pages/DribbbleBalExample.dart';
-import 'package:fluttership/UI/Pages/ProductDetailsPage.dart';
-import 'package:fluttership/UI/Pages/RichCalculator.dart';
-import 'package:fluttership/UI/Pages/SendMoneyPage.dart';
-import 'package:fluttership/UI/Pages/Tesla/Page.dart';
-import 'package:fluttership/UI/Pages/TimerDrawerPage.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Models/Clone.dart';
+import 'package:fluttershipp/UI/Home/Mobile.dart';
+import 'package:fluttershipp/UI/Home/Web.dart';
+import 'package:fluttershipp/UI/Pages/Account.dart';
+import 'package:fluttershipp/UI/Pages/AssemblingAnalyticsPage.dart';
+import 'package:fluttershipp/UI/Pages/ButtonExample.dart';
+import 'package:fluttershipp/UI/Pages/CustomStepper.dart';
+import 'package:fluttershipp/UI/Pages/DoubleCardExample.dart';
+import 'package:fluttershipp/UI/Pages/ExpandedBottomNav.dart';
+import 'package:fluttershipp/UI/Pages/ExpandileExample.dart';
+import 'package:fluttershipp/UI/Pages/GoogleSearchPage.dart';
+import 'package:fluttershipp/UI/Pages/ImgExample.dart';
+import 'package:fluttershipp/UI/Pages/InkkExample.dart';
+import 'package:fluttershipp/UI/Pages/InterLacedDashBoard.dart';
+import 'package:fluttershipp/UI/Pages/DribbbleBalExample.dart';
+import 'package:fluttershipp/UI/Pages/ProductDetailsPage.dart';
+import 'package:fluttershipp/UI/Pages/RichCalculator.dart';
+import 'package:fluttershipp/UI/Pages/SendMoneyPage.dart';
+import 'package:fluttershipp/UI/Pages/Tesla/Page.dart';
+import 'package:fluttershipp/UI/Pages/TimerDrawerPage.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../Pages/ComplexDrawerPage.dart';
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           final bool isWeb =
               screen.localWidgetSize.height > 400 && screen.localWidgetSize.width > 600;
           if (isWeb) {
-            return WebHomePage(clones: clones);
+            return WebHomePage(clones: clones, width: screen.localWidgetSize.width);
           } else {
             return MobileHomePage(
               clones: clones,
@@ -58,6 +58,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   static List<Clone> clones = [
+    Clone(
+      title: "Assembling Analytics",
+      description: "Analytics page with auto assembling animated widgets",
+      icon: Icons.apps,
+      color: Colors.blue,
+      page: AssemblingAnalyticsPage(),
+    ),
     Clone(
       icon: Icons.car_rental,
       color: Colorz.complexDrawerBlack,
@@ -93,13 +100,7 @@ class _HomePageState extends State<HomePage> {
       color: Colors.purple,
       page: InterLacedDashBoard(),
     ),
-    Clone(
-      title: "Assembling Analytics",
-      description: "Analytics page with auto assembling animated widgets",
-      icon: Icons.apps,
-      color: Colors.blue,
-      page: AssemblingAnalyticsPage(),
-    ),
+    
     Clone(
       title: "Complex Drawer",
       description: "Designing a complex drawer menu",
@@ -142,7 +143,6 @@ class _HomePageState extends State<HomePage> {
       color: Colors.pink,
       page: AccountPage(),
     ),
-    
     Clone(
       title: "Expanded Bottom Navigation Bar",
       description: "A custom bottom navigation bar with additional menus",
@@ -192,7 +192,6 @@ class _HomePageState extends State<HomePage> {
       color: Colors.blue,
       page: InkkExample(),
     ),
-    
     Clone(
       title: "Dribbble Ball",
       description: "Example use case of dribbble ball type of loading widgets",
@@ -200,6 +199,5 @@ class _HomePageState extends State<HomePage> {
       color: Colors.pink,
       page: DribbbleBallExamplePage(),
     ),
-    
   ];
 }

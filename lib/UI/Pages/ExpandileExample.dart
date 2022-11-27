@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
-// import 'package:fluttership/Dialogues/BuyDialogue.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+// import 'package:fluttershipp/Dialogues/BuyDialogue.dart';
 
 class ExpandileExamplePage extends StatefulWidget {
   const ExpandileExamplePage({Key? key}) : super(key: key);
@@ -86,14 +87,17 @@ class _ExpandileExamplePageState extends State<ExpandileExamplePage> {
   ///Children1 of the widget
   Widget imgWidget() {
     final String imgUrl = "https://spectrum.ieee.org/media-library/image.jpg?id=27044748";
-    return Img(
-      imgUrl: imgUrl,
-      outterPadding: 8,
+    return ResponsiveBuilder(builder: (c, s) {
+      final double width = s.localWidgetSize.width;
+      return Img(
+        imgUrl: imgUrl,
+        outterPadding: 8,
 
-      ///Just making the image as 16:9 ratio
-      height: (Widgets.mwidth(context) / 16) * 9,
-      width: Widgets.mwidth(context),
-    );
+        ///Just making the image as 16:9 ratio
+        height: (width / 16) * 9,
+        width: width,
+      );
+    });
   }
 
   ///Children2 of the widget
@@ -190,7 +194,7 @@ class _ExpandileExamplePageState extends State<ExpandileExamplePage> {
     //     });
   }
 
-  Future<void> moreFn() async{
+  Future<void> moreFn() async {
     debugPrint("More button is pressed!");
   }
 }

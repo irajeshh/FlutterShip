@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
-import 'package:fluttership/Models/IconLabel.dart';
-import 'package:fluttership/Models/InterlacedEvent.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
+import 'package:fluttershipp/Constants/Constants.dart';
+import 'package:fluttershipp/Models/IconLabel.dart';
+import 'package:fluttershipp/Models/InterlacedEvent.dart';
+import 'package:fluttershipp/Widgets/Widgets.dart';
 
 class InterLacedDashBoard extends StatefulWidget {
   const InterLacedDashBoard({Key? key}) : super(key: key);
@@ -14,7 +14,10 @@ class InterLacedDashBoard extends StatefulWidget {
 class _InterLacedDashBoardState extends State<InterLacedDashBoard> {
   IconLabel? selectedIconLabel; //helps to indetify which horizontal //grid is selected
   String selectedYwmd = '';
-  List<int> selectedEventContainers = [1,2,];
+  List<int> selectedEventContainers = [
+    1,
+    2,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +53,6 @@ class _InterLacedDashBoardState extends State<InterLacedDashBoard> {
           bottomRow(),
         ]);
   }
-
- 
 
   Widget avatar({double? size}) {
     return Container(
@@ -296,23 +297,23 @@ class _InterLacedDashBoardState extends State<InterLacedDashBoard> {
   Widget staggaredColorGrid() {
     return Expanded(
       child: GridView.count(
-        shrinkWrap: true,
-        // shrinkWrap: true,
-        crossAxisCount: 2,
-        crossAxisSpacing: 4,
-        mainAxisSpacing: 4,
-        children: events.map((InterlacedEvent event){
-           int index = events.indexOf(event);
-          return eventContainer(event, index);
-        }).toList()
-        
-        // staggeredTileBuilder: (int index) {
-        //   double height = 120;
-        //   if (events[index].endingTime == null) height = 60;
-        //   if (index == 3) height = 180;
-        //   return StaggeredTile.extent(2, height);
-        // },
-      ),
+          shrinkWrap: true,
+          // shrinkWrap: true,
+          crossAxisCount: 2,
+          crossAxisSpacing: 4,
+          mainAxisSpacing: 4,
+          children: events.map((InterlacedEvent event) {
+            int index = events.indexOf(event);
+            return eventContainer(event, index);
+          }).toList()
+
+          // staggeredTileBuilder: (int index) {
+          //   double height = 120;
+          //   if (events[index].endingTime == null) height = 60;
+          //   if (index == 3) height = 180;
+          //   return StaggeredTile.extent(2, height);
+          // },
+          ),
     );
   }
 
@@ -458,9 +459,9 @@ C̶o̶l̶o̶r̶G̶r̶i̶d̶
 // USE THE BELOW IF YOU WANT THE SAME RESULT FOR 'horizontalGrid' AS SHOWN IN THE DESIGN
 //BUT I'M NOT SATISFIED WITH THE POPED UP VIEW, SO STICKING WITH THE BASIC
 // import 'package:flutter/material.dart';
-// import 'package:fluttership/Constants/Constants.dart';
-// import 'package:fluttership/Models/IconLabel.dart';
-// import 'package:fluttership/Widgets/Widgets.dart';
+// import 'package:fluttershipp/Constants/Constants.dart';
+// import 'package:fluttershipp/Models/IconLabel.dart';
+// import 'package:fluttershipp/Widgets/Widgets.dart';
 
 // class InterLacedDashBoard extends StatefulWidget {
 //   const InterLacedDashBoard({ Key? key }) : super(key: key);

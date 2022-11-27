@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/MyApp.dart';
+import 'package:fluttershipp/MyApp.dart';
 
-void main() {
+ void main(List<String> args) {
   runApp(MyApp());
 }

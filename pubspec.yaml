@@ -1,5 +1,5 @@
-name: fluttership
-description: A Project Where I Share The Things I Love To Share [Null Safe]
+name: fluttershipp
+description: A Flutter Web Project Where I Share The Things I Love To Do
 publish_to: 'none'
 version: 2.0.0
 
@@ -19,6 +19,7 @@ dependencies:
   wave: ^0.2.2
   oktoast: ^3.3.1
   responsive_builder: ^0.4.3
+  url_launcher: ^6.1.7
   
 dev_dependencies:
   flutter_test:
