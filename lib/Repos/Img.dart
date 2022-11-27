@@ -5,9 +5,9 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImgRepo {
-  ImgRepo._privateConstructor();
-  static final ImgRepo _instance = ImgRepo._privateConstructor();
-  static ImgRepo get instance => _instance;
+  // ImgRepo._privateConstructor();
+  // static final ImgRepo _instance = ImgRepo._privateConstructor();
+  // static ImgRepo get instance => _instance;
 
   static final ImagePicker imagePicker = ImagePicker();
 
