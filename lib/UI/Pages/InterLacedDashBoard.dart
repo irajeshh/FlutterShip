@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/IconLabel.dart';
 import 'package:fluttership/Models/InterlacedEvent.dart';
