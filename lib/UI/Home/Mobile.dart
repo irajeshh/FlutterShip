@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/Clone.dart';
 
 import '../../Widgets/SearchBar.dart';
@@ -19,7 +20,17 @@ class _MobileHomePageState extends State<MobileHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar(),
       body: body(),
+    );
+  }
+
+  AppBar appBar() {
+    return AppBar(
+      title: Txt(
+        text: 'Fluttershipp',
+      ),
+      backgroundColor: Colorz.primaryColor,
     );
   }
 
@@ -43,22 +54,40 @@ class _MobileHomePageState extends State<MobileHomePage> {
       return clone.title.toString().toLowerCase().contains(query) ||
           clone.title.toString().toLowerCase().contains(query);
     }).toList();
-    return Flexible(
+    return Expanded(
       child: ListView.builder(
-        padding: EdgeInsets.all(0),
         shrinkWrap: false,
         itemCount: _clones.length,
         itemBuilder: (BuildContext context, int index) {
-          Clone clone = _clones[index];
-          return ColorTile(
-              icon: clone.icon,
-              color: clone.color,
-              title: clone.title,
-              subtitle: clone.description,
-              onTap: () {
-                Widgets.push(clone.page, context);
-              });
+          final Clone clone = _clones[index];
+          return cloneTile(clone);
         },
+      ),
+    );
+  }
+
+  Widget cloneTile(Clone clone){
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12,),
+      child: Card(
+        elevation: 6,
+        child: ListTile(
+                leading: IconButton(
+                    icon: Icon(
+                  clone.icon,
+                  color: clone.color,
+                )),
+                title: Txt(
+                  text: clone.title,
+                  fontWeight: FontWeight.bold,
+                ),
+                subtitle: Txt(
+                  text: clone.description,
+                ),
+                onTap: () {
+                  Widgets.push(clone.page, context);
+                },
+              ),
       ),
     );
   }
