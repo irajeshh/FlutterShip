@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs, avoid_dynamic_calls
+
 part of 'Widgets.dart';
 
 class Button extends StatefulWidget {
@@ -11,15 +13,18 @@ class Button extends StatefulWidget {
   final Function onPressed;
   final Color buttonColor;
   final double? fontSize;
+  final double? iconSize;
   final int? maxLines;
   final double? width;
   final FontWeight? fontWeight;
   final bool upperCaseFirst;
   final bool isBig;
+  final double elevation;
   const Button({
     Key? key,
     this.isBig = false,
     this.fontSize,
+    this.iconSize,
     this.icon,
     this.text,
     this.textColor = Colors.white,
@@ -33,13 +38,14 @@ class Button extends StatefulWidget {
     this.processingText,
     this.ontaskCompletedText,
     this.onTaskCompletedIcon,
+    this.elevation = 5.0,
   }) : super(key: key);
 
   @override
   _ButtonState createState() => _ButtonState();
 
-  static void invalidAction() async {
-    print("Invalid Action");
+  static Future<void> invalidAction() async {
+    debugPrint('Invalid Action');
   }
 }
 
@@ -50,10 +56,12 @@ class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 350),
+      duration: const Duration(milliseconds: 350),
       height: widget.isBig ? 65 : 52,
       width: widget.width,
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
+      margin:
+          widget.isBig && !kIsWeb ? const EdgeInsets.symmetric(horizontal: 12, vertical: 16) : null,
       child: finalButton(),
     );
   }
@@ -67,19 +75,19 @@ class _ButtonState extends State<Button> {
   }
 
   Widget iconButton() {
-    return TextButton.icon(
+    return ElevatedButton.icon(
       icon: iconWidget(),
-      style: normalButtonStyle,
+      style: buttonStyle,
       label: txtWidget(),
       onPressed: onPressed,
     );
   }
 
   Widget normalButton() {
-    return TextButton(
-      child: txtWidget(),
-      style: normalButtonStyle,
+    return ElevatedButton(
+      style: buttonStyle,
       onPressed: onPressed,
+      child: txtWidget(),
     );
   }
 
@@ -87,7 +95,7 @@ class _ButtonState extends State<Button> {
     dynamic _finalText;
     if (processing) _finalText = widget.processingText;
     if (processed) _finalText = widget.ontaskCompletedText;
-    if (_finalText == null) _finalText = widget.text;
+    _finalText ??= widget.text;
 
     return Txt(
       text: _finalText,
@@ -102,32 +110,41 @@ class _ButtonState extends State<Button> {
 
   Widget iconWidget() {
     Widget? child;
-    dynamic _icon = processed ? (widget.onTaskCompletedIcon ?? widget.icon) : widget.icon;
-    if (_icon is IconData) child = Icon(_icon, color: _textColor, size: widget.fontSize);
+    final dynamic _icon = processed ? (widget.onTaskCompletedIcon ?? widget.icon) : widget.icon;
+    if (_icon is IconData) {
+      child = Icon(_icon, color: _textColor, size: widget.iconSize ?? widget.fontSize);
+    }
     if (_icon is Widget) child = _icon;
-    if (processing) child = Widgets.loadingCircle(color: _buttonColor);
+    if (processing) child = Widgets.loadingCircle(backgroundColor: widget.buttonColor);
     return child!;
   }
 
-  void onPressed() async {
-    if (mounted)
-      setState(() {
-        processing = true;
-        processed = false;
-      });
-    await Widgets.wait(100);
-    try {
-      await widget.onPressed();
-    } catch (e) {
-      // Widgets.showToast("Error: $e");
-    }
-    if (mounted) {
-      await Widgets.wait(100);
-      if (mounted)
+  Future<void> onPressed() async {
+    if (processing) {
+      Widgets.showToast('Already processing...');
+      return;
+    } else {
+      if (mounted) {
         setState(() {
-          processing = false;
-          processed = true;
+          processing = true;
+          processed = false;
         });
+      }
+      await Widgets.wait(100);
+      try {
+        await widget.onPressed();
+      } catch (e) {
+        Widgets.showToast('Error: $e');
+      }
+      if (mounted) {
+        await Widgets.wait(100);
+        if (mounted) {
+          setState(() {
+            processing = false;
+            processed = true;
+          });
+        }
+      }
     }
   }
 
@@ -140,12 +157,21 @@ class _ButtonState extends State<Button> {
 
   Color get _buttonColor => processing ? _darkenButtonColor : widget.buttonColor;
 
-  ButtonStyle get normalButtonStyle =>
-      TextButton.styleFrom(backgroundColor: _buttonColor, shape: shape);
+  ButtonStyle get buttonStyle => TextButton.styleFrom(
+        backgroundColor: _buttonColor,
+        shape: shape,
+        shadowColor: widget.buttonColor,
+        elevation: widget.elevation,
+      );
 
   ButtonStyle get outlinedButtonStyle => OutlinedButton.styleFrom(
-      shadowColor: _buttonColor, onSurface: _buttonColor, primary: _buttonColor, shape: shape);
+        shadowColor: _buttonColor,
+        disabledForegroundColor: _buttonColor,
+        foregroundColor: _buttonColor,
+        shape: shape,
+      );
 
-  RoundedRectangleBorder get shape =>
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(widget.radius ?? 6));
+  RoundedRectangleBorder get shape => RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(widget.radius ?? 6),
+      );
 }

@@ -11,7 +11,7 @@ import 'package:flutter/services.dart';
 // import 'package:fluttership/Repos/Img.dart';
 import 'package:fluttership/Constants/Constants.dart';
 import 'package:intl/intl.dart';
-
+import 'package:oktoast/oktoast.dart' as oktoast;
 part './Loader.dart';
 part './Txt.dart';
 part './Scroller.dart';
@@ -62,11 +62,15 @@ class Widgets {
     return "https://firebasestorage.googleapis.com/v0/b/service-ad14a.appspot.com/o/avatars%2F$fileName.jpg?alt=media";
   }
 
-  static Widget loadingCircle({Color? color, double size = 26}) {
+  ///A [CircularProgressIndicator] widget, that can [fit] inside [Buttons] with custom [color] value & [size]
+  static Widget loadingCircle({
+    Color backgroundColor = Colors.grey,
+    Color valueColor = Colors.white,
+    double size = 26,
+  }) {
     return Material(
       type: MaterialType.circle,
-      color: color,
-      elevation: 0,
+      color: Colors.transparent,
       child: SizedBox(
         height: size,
         width: size,
@@ -74,7 +78,8 @@ class Widgets {
           fit: BoxFit.scaleDown,
           child: CircularProgressIndicator(
             strokeWidth: 5,
-            valueColor: AlwaysStoppedAnimation(Colors.white),
+            valueColor: AlwaysStoppedAnimation<Color>(valueColor),
+            backgroundColor: backgroundColor.withOpacity(0.25),
           ),
         ),
       ),
@@ -130,6 +135,25 @@ class Widgets {
         fontSize: 16,
       ),
     );
+  }
+
+  ///Showing a classic [Toast] to inform the [User] about
+  ///the recent [actions] they [performed] or [requested]
+  ///[Example] await read();
+  static void showToast(dynamic m) {
+    String message = '$m';
+    if (debugging) {
+      debugPrint(message);
+    }
+    if (message.contains('cloud_firestore/unavailable')) message = 'Poor internet connection!';
+    if (message.contains('cloud_firestore/permission-denied')) message = 'Permission denied!';
+    try {
+      oktoast.showToast(
+        message,
+      );
+    } catch (e) {
+      debugPrint('Error showing Toast: $e');
+    }
   }
 
   ///An [Ios] style tiny arrow widget, which can be used on [ListTile] widgets with customizations

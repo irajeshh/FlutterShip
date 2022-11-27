@@ -1,38 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/Clone.dart';
-import 'package:fluttership/UI/Account.dart';
-import 'package:fluttership/UI/AssemblingAnalyticsPage.dart';
-import 'package:fluttership/UI/ButtonExample.dart';
-import 'package:fluttership/UI/CustomStepper.dart';
-import 'package:fluttership/UI/DoubleCardExample.dart';
-import 'package:fluttership/UI/ExpandedBottomNav.dart';
-import 'package:fluttership/UI/ExpandileExample.dart';
-import 'package:fluttership/UI/GoogleSearchPage.dart';
-import 'package:fluttership/UI/ImgExample.dart';
-import 'package:fluttership/UI/InkkExample.dart';
-import 'package:fluttership/UI/InterLacedDashBoard.dart';
-import 'package:fluttership/UI/DribbbleBalExample.dart';
-import 'package:fluttership/UI/ProductDetailsPage.dart';
-import 'package:fluttership/UI/RichCalculator.dart';
-import 'package:fluttership/UI/SendMoneyPage.dart';
-import 'package:fluttership/UI/Tesla/Page.dart';
-import 'package:fluttership/UI/TimerDrawerPage.dart';
+import 'package:fluttership/UI/Pages/Account.dart';
+import 'package:fluttership/UI/Pages/AssemblingAnalyticsPage.dart';
+import 'package:fluttership/UI/Pages/ButtonExample.dart';
+import 'package:fluttership/UI/Pages/CustomStepper.dart';
+import 'package:fluttership/UI/Pages/DoubleCardExample.dart';
+import 'package:fluttership/UI/Pages/ExpandedBottomNav.dart';
+import 'package:fluttership/UI/Pages/ExpandileExample.dart';
+import 'package:fluttership/UI/Pages/GoogleSearchPage.dart';
+import 'package:fluttership/UI/Pages/ImgExample.dart';
+import 'package:fluttership/UI/Pages/InkkExample.dart';
+import 'package:fluttership/UI/Pages/InterLacedDashBoard.dart';
+import 'package:fluttership/UI/Pages/DribbbleBalExample.dart';
+import 'package:fluttership/UI/Pages/ProductDetailsPage.dart';
+import 'package:fluttership/UI/Pages/RichCalculator.dart';
+import 'package:fluttership/UI/Pages/SendMoneyPage.dart';
+import 'package:fluttership/UI/Pages/Tesla/Page.dart';
+import 'package:fluttership/UI/Pages/TimerDrawerPage.dart';
 import 'package:fluttership/Widgets/SearchBar.dart';
 import 'package:fluttership/Widgets/Widgets.dart';
 
-import 'UI/ComplexDrawerPage.dart';
-import 'UI/CurrenciesPage.dart';
-import 'UI/ScrollerSamplePage.dart';
+import '../Pages/ComplexDrawerPage.dart';
+import '../Pages/CurrenciesPage.dart';
+import '../Pages/ScrollerSamplePage.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+
+class MobileHomePage extends StatefulWidget {
+  const MobileHomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _MobileHomePageState createState() => _MobileHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MobileHomePageState extends State<MobileHomePage> {
   final TextEditingController searchController = TextEditingController();
   String query = '';
 
@@ -56,28 +57,28 @@ class _HomePageState extends State<HomePage> {
     return SearchBar(
       onChanged: (z) => setState(() => query = z.toLowerCase()),
     );
-    return Padding(
-      padding: const EdgeInsets.only(top: 28, bottom: 8),
-      child: Card(
-        elevation: 0,
-        color: Colors.grey.shade50,
-        child: ListTile(
-          leading: Icon(Icons.search, color: Colors.grey),
-          title: TextField(
-            controller: searchController,
-            onChanged: (z) => setState(() => query = z.toLowerCase()),
-            decoration: InputDecoration(
-              hintText: "Search FlutterShip...",
-              hintStyle: TextStyle(
-                color: Colors.grey,
-              ),
-              border: InputBorder.none,
-            ),
-          ),
-          trailing: IconButton(onPressed: clearSearch, icon: Icon(Icons.clear, color: Colors.grey)),
-        ),
-      ),
-    );
+    // return Padding(
+    //   padding: const EdgeInsets.only(top: 28, bottom: 8),
+    //   child: Card(
+    //     elevation: 0,
+    //     color: Colors.grey.shade50,
+    //     child: ListTile(
+    //       leading: Icon(Icons.search, color: Colors.grey),
+    //       title: TextField(
+    //         controller: searchController,
+    //         onChanged: (z) => setState(() => query = z.toLowerCase()),
+    //         decoration: InputDecoration(
+    //           hintText: "Search FlutterShip...",
+    //           hintStyle: TextStyle(
+    //             color: Colors.grey,
+    //           ),
+    //           border: InputBorder.none,
+    //         ),
+    //       ),
+    //       trailing: IconButton(onPressed: clearSearch, icon: Icon(Icons.clear, color: Colors.grey)),
+    //     ),
+    //   ),
+    // );
   }
 
   Widget clonesResult() {
