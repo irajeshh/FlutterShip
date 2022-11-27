@@ -34,8 +34,8 @@ class _SearchBarState extends State<SearchBar> {
       alignment: showSearchField ? Alignment.center : Alignment.centerRight,
       duration: Widgets.duration1Sec,
       padding: EdgeInsets.only(
-        top: showSearchField ? 60 : 50,
-        bottom: showSearchField ? 30 : 20,
+        top: showSearchField ? 12 : 8,
+        bottom: showSearchField ? 12 : 8,
         left: showSearchField ? 12 : 8,
         right: showSearchField ? 12 : 12,
       ),
