@@ -25,11 +25,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
 
   AppBar appBar() {
     return AppBar(
-      leading: IconButton(
-          onPressed: () {
-            // Navigator.of(context).pop();
-          },
-          icon: Icon(Icons.arrow_back)),
+      leading: Widgets.closeButton(color: Colors.white),
       elevation: 0,
       title: Txt(text: "Send money"),
       backgroundColor: Colors.grey.shade900,

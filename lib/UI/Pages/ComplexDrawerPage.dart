@@ -27,6 +27,9 @@ class _ComplexDrawerPageState extends State<ComplexDrawerPage> {
       iconTheme: IconTheme.of(context).copyWith(
         color: Colorz.complexDrawerBlack,
       ),
+      actions: [
+        Widgets.closeButton(color: Colors.blueGrey),
+      ],
       title: Txt(
         text: "Complex Drawer",
         color: Colorz.complexDrawerBlack,
@@ -68,7 +71,7 @@ class _ComplexDrawerState extends State<ComplexDrawer> {
     return Container(
       width: width,
       child: row(),
-      color: Colorz.compexDrawerCanvasColor,
+      color: Colors.black12,
     );
   }
 
@@ -76,12 +79,25 @@ class _ComplexDrawerState extends State<ComplexDrawer> {
     return Row(children: [
       isExpanded ? blackIconTiles() : blackIconMenu(),
       invisibleSubMenus(),
+      shadowCloser(),
     ]);
   }
 
+  Widget shadowCloser() {
+    return Expanded(
+      child: Inkk(
+          spalshColor: Colors.blueGrey,
+          child: Container(),
+          onTap: () {
+            Widgets.pop(context);
+          }),
+    );
+  }
+
   Widget blackIconTiles() {
-    return Container(
-      width: 200,
+    return AnimatedContainer(
+      duration: Widgets.duration,
+      width: 220,
       color: Colorz.complexDrawerBlack,
       child: Column(
         children: [
@@ -176,24 +192,24 @@ class _ComplexDrawerState extends State<ComplexDrawer> {
     // List<CDM> _cmds = cdms..removeAt(0);
     return AnimatedContainer(
       duration: Duration(milliseconds: 500),
-      width: isExpanded ? 0 : 125,
-      color: Colorz.compexDrawerCanvasColor,
+      width: isExpanded ? 0 : (selectedIndex == -1 ? 0 : 125),
+      color: Colors.transparent,
       child: Column(
         children: [
           Container(height: 95),
-          Expanded(
-            child: ListView.builder(
-                itemCount: cdms.length,
-                itemBuilder: (context, index) {
-                  CDM cmd = cdms[index];
-                  // if(index==0) return Container(height:95);
-                  //controll button has 45 h + 20 top + 30 bottom = 95
+          ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              itemCount: cdms.length,
+              itemBuilder: (context, index) {
+                CDM cmd = cdms[index];
+                // if(index==0) return Container(height:95);
+                //controll button has 45 h + 20 top + 30 bottom = 95
 
-                  bool selected = selectedIndex == index;
-                  bool isValidSubMenu = selected && cmd.submenus.isNotEmpty;
-                  return subMenuWidget([cmd.title]..addAll(cmd.submenus), isValidSubMenu);
-                }),
-          ),
+                bool selected = selectedIndex == index;
+                bool isValidSubMenu = selected && cmd.submenus.isNotEmpty;
+                return subMenuWidget([cmd.title]..addAll(cmd.submenus), isValidSubMenu);
+              }),
         ],
       ),
     );

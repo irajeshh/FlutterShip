@@ -16,6 +16,7 @@ class DoubleCardExample extends StatelessWidget {
 
   AppBar appBar() {
     return AppBar(
+      leading: Widgets.closeButton(color: Colors.white),
       title: Txt(text: 'Double card example'),
       backgroundColor: Colorz.complexDrawerBlack,
     );

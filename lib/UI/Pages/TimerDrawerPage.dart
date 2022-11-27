@@ -37,6 +37,9 @@ class _TimerDrawerPageState extends State<TimerDrawerPage> {
   AppBar appBar() {
     return AppBar(
       title: Txt(text: "Simple Drawer"),
+      actions: [
+        Widgets.closeButton(color: Colors.white),
+      ],
     );
   }
 

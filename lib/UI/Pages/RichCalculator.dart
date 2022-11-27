@@ -23,6 +23,14 @@ class _RichCalculatorPageState extends State<RichCalculatorPage> {
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 12),
+              child: Widgets.closeButton(color: Colors.white),
+            ),
+          ],
+        ),
         displaySpace(),
         topRow(),
         bottomRow(),

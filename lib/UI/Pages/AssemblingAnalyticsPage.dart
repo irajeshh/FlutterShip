@@ -111,7 +111,9 @@ class _AssemblingAnalyticsPageState extends State<AssemblingAnalyticsPage> {
     return AnimatedContainer(
       duration: duration,
       color: showHorizontalCircleLabelsAndBackground ? Colors.grey.shade900 : Colors.black,
-      child: Row(children: [
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+       children: [
         horizontalCircleListView(),
         horizontalCircleListView(isLeft: false),
       ]),
@@ -121,7 +123,8 @@ class _AssemblingAnalyticsPageState extends State<AssemblingAnalyticsPage> {
   Widget horizontalCircleListView({bool isLeft = true}) {
     return Container(
       height: 80,
-      width: MediaQuery.of(context).size.width / 2,
+      alignment: Alignment.center,
+      width: MediaQuery.of(context).size.width / 2.25,
       child: AnimatedList(
         reverse: isLeft,
         key: isLeft ? horizontalCirclesKeyLeft : horizontalCirclesKeyRight,
@@ -292,7 +295,7 @@ class _AssemblingAnalyticsPageState extends State<AssemblingAnalyticsPage> {
           child: AnimatedOpacity(
               duration: duration,
               opacity: showFab ? 1 : 0,
-              child: Icon(Icons.add, color: Colors.white)),
+              child: Icon(Icons.close, color: Colors.white)),
         ),
       ),
     );

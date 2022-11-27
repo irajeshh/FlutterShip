@@ -61,6 +61,9 @@ class _TeslaCarAppPageState extends State<TeslaCarAppPage> {
             if (mounted) setState(() => isHeadLightTurnedOn = z);
           },
         ),
+        Positioned(
+          top: 20,
+          child: Widgets.closeButton(color: Colors.white,)),
       ],
     );
   }

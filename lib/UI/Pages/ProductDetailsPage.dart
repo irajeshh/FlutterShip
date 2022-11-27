@@ -62,6 +62,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     return Container(
       height: height,
       width: width,
+      alignment: Alignment.topCenter,
+      child: Widgets.closeButton(color: Colors.white),
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(Urls.macMiniCover),

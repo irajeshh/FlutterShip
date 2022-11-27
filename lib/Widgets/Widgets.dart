@@ -86,6 +86,19 @@ class Widgets {
     );
   }
 
+  static Widget closeButton({Color? iconColor, required Color color,double? opacity}) {
+    return Container(
+      padding: EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: color.withOpacity(opacity ?? 0.2),
+        shape: BoxShape.circle,
+      ),
+      child: CloseButton(
+        color: iconColor ?? color,
+      ),
+    );
+  }
+
   ///This will return the darken color of the given value
   static Color darkenColor(Color color, double value) =>
       HSLColor.fromColor(color).withLightness(value).toColor();
@@ -101,8 +114,8 @@ class Widgets {
 
   static const Duration duration = Duration(milliseconds: 350);
   static const Duration duration1Sec = Duration(seconds: 1);
-  static const Duration duration2Sec = Duration(seconds:2);
-  static const Duration duration3Sec = Duration(seconds:3);
+  static const Duration duration2Sec = Duration(seconds: 2);
+  static const Duration duration3Sec = Duration(seconds: 3);
 
   static const Curve curve = Curves.easeIn;
 

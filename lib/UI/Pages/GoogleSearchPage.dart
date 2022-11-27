@@ -48,7 +48,8 @@ class _GoogleSearchPageState extends State<GoogleSearchPage> {
         IconButton(
           icon: Icon(Icons.account_circle_outlined, color: Colors.blue.shade800),
           onPressed: () {},
-        )
+        ),
+        Widgets.closeButton(color: Colors.black),
       ],
     );
   }

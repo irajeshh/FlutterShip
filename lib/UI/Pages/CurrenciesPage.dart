@@ -20,6 +20,7 @@ class _CurrenciesPageState extends State<CurrenciesPage> {
     return Scaffold(
       backgroundColor: Colorz.currenciesPageBackground,
       appBar: AppBar(
+        leading: Widgets.closeButton(color: Colors.white),
         backgroundColor: Colorz.currenciesPageBackground,
       ),
       body: listView(),

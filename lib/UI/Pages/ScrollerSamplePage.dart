@@ -21,6 +21,7 @@ class _ScrollerSamplePageState extends State<ScrollerSamplePage> {
 
   AppBar appBar() {
     return AppBar(
+      leading: Widgets.closeButton(color: Colors.white),
       title: Txt(text: "Scroller Sample"),
     );
   }

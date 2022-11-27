@@ -39,6 +39,7 @@ class _ExpandedBottomNavigationBarPageState extends State<ExpandedBottomNavigati
 
   AppBar appBar() {
     return AppBar(
+      leading: Widgets.closeButton(color: Colors.white),
       title: Txt(text: "Expanded BottomNav"),
       backgroundColor: Colorz.complexDrawerBlack,
     );

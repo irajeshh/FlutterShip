@@ -136,10 +136,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget addButton() {
-    return CircleAvatar(
-      child: Icon(Icons.add, color: Colors.white),
-      backgroundColor: Colorz.accountPurple,
-    );
+    return Widgets.closeButton(color: Colorz.accountPurple, iconColor: Colors.white, opacity:1);
   }
 
   // Widget fab(){

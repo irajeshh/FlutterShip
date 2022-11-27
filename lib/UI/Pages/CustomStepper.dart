@@ -25,6 +25,7 @@ class _StepperExampleState extends State<StepperExample> {
         text: "Order details",
         color: Colors.white,
       ),
+      leading: Widgets.closeButton(color: Colors.white),
       centerTitle: true,
       backgroundColor: Colors.green,
     );

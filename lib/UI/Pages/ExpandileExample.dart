@@ -27,6 +27,7 @@ class _ExpandileExamplePageState extends State<ExpandileExamplePage> {
     return AppBar(
       title: Txt(text: 'Expandile example'),
       elevation: 8,
+      leading: Widgets.closeButton(color: Colors.white),
       backgroundColor: Widgets.darkenColor(primaryColor, 0.6),
     );
   }

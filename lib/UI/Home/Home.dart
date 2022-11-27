@@ -73,6 +73,13 @@ class _HomePageState extends State<HomePage> {
       page: ExpandileExamplePage(),
     ),
     Clone(
+      title: 'Double card example page',
+      description: 'To use the double card widget',
+      icon: Icons.layers,
+      color: Colorz.doubleCardBlue,
+      page: DoubleCardExample(),
+    ),
+    Clone(
       title: "Product Details",
       description: "An Imaginary UI of Apple Macbook Customization Page",
       icon: Icons.computer,
@@ -135,13 +142,7 @@ class _HomePageState extends State<HomePage> {
       color: Colors.pink,
       page: AccountPage(),
     ),
-    Clone(
-      title: "Scroller Sample",
-      description: "Example use case of scroller widget",
-      icon: Icons.list,
-      color: Colors.blue,
-      page: ScrollerSamplePage(),
-    ),
+    
     Clone(
       title: "Expanded Bottom Navigation Bar",
       description: "A custom bottom navigation bar with additional menus",
@@ -157,11 +158,25 @@ class _HomePageState extends State<HomePage> {
       page: RichCalculatorPage(),
     ),
     Clone(
+      title: "Custom Stepper",
+      description: "Example use case of custom stepper widget design",
+      icon: Icons.format_list_numbered,
+      color: Colors.green,
+      page: StepperExample(),
+    ),
+    Clone(
       title: "Img",
       description: "Example use case of Img widget",
       icon: Icons.photo,
       color: Colors.green,
       page: ImgExample(),
+    ),
+    Clone(
+      title: "Scroller Sample",
+      description: "Example use case of scroller widget",
+      icon: Icons.list,
+      color: Colors.blue,
+      page: ScrollerSamplePage(),
     ),
     Clone(
       title: "Buttons",
@@ -177,13 +192,7 @@ class _HomePageState extends State<HomePage> {
       color: Colors.blue,
       page: InkkExample(),
     ),
-    Clone(
-      title: "Custom Stepper",
-      description: "Example use case of custom stepper widget design",
-      icon: Icons.format_list_numbered,
-      color: Colors.green,
-      page: StepperExample(),
-    ),
+    
     Clone(
       title: "Dribbble Ball",
       description: "Example use case of dribbble ball type of loading widgets",
@@ -191,12 +200,6 @@ class _HomePageState extends State<HomePage> {
       color: Colors.pink,
       page: DribbbleBallExamplePage(),
     ),
-    Clone(
-      title: 'Double card example page',
-      description: 'To use the double card widget',
-      icon: Icons.layers,
-      color: Colorz.doubleCardBlue,
-      page: DoubleCardExample(),
-    ),
+    
   ];
 }

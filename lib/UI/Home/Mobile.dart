@@ -39,12 +39,15 @@ class _MobileHomePageState extends State<MobileHomePage> {
   Widget body() {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            styleButton(),
-            searchField(),
-          ],
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              styleButton(),
+              searchField(),
+            ],
+          ),
         ),
         clonesResult(),
       ],

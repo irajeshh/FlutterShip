@@ -15,7 +15,7 @@ class InterLacedDashBoard extends StatefulWidget {
 class _InterLacedDashBoardState extends State<InterLacedDashBoard> {
   IconLabel? selectedIconLabel; //helps to indetify which horizontal //grid is selected
   String selectedYwmd = '';
-  List<int> selectedEventContainers = [];
+  List<int> selectedEventContainers = [1,2,];
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,11 @@ class _InterLacedDashBoardState extends State<InterLacedDashBoard> {
         physics: BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(vertical: 25, horizontal: 12),
         children: [
-          leadingButton(),
+          Row(
+            children: [
+              Widgets.closeButton(color: Colorz.interlacedChatPurple),
+            ],
+          ),
           avatar(size: 150),
           userTile(),
           horizontalGrid(),
@@ -48,16 +52,7 @@ class _InterLacedDashBoardState extends State<InterLacedDashBoard> {
         ]);
   }
 
-  Widget leadingButton() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      child: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.grey),
-          onPressed: () {
-            Navigator.of(context).pop();
-          }),
-    );
-  }
+ 
 
   Widget avatar({double? size}) {
     return Container(
@@ -135,32 +130,33 @@ class _InterLacedDashBoardState extends State<InterLacedDashBoard> {
     bool selected = selectedIconLabel == iconLabel;
     double fullWidth = MediaQuery.of(context).size.width;
     double width = fullWidth / 4; //half length of icons list
-
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 350),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: selected ? Colors.white : null,
-        border: Border.all(
-          width: 0.25,
-          color: selected ? Colors.white : Colors.grey.shade400,
+    final BorderRadius? _br = selected ? BorderRadius.circular(12) : borderRadius;
+    return InkWell(
+      borderRadius: _br,
+      onTap: () {
+        setState(() {
+          selectedIconLabel = iconLabel;
+        });
+      },
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 350),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: selected ? Colors.white : null,
+          border: Border.all(
+            width: 0.25,
+            color: selected ? Colors.white : Colors.grey.shade400,
+          ),
+          borderRadius: _br,
+          boxShadow: [
+            if (selected)
+              BoxShadow(
+                color: Colors.grey,
+                spreadRadius: 0.25,
+                blurRadius: 0.25,
+              ),
+          ],
         ),
-        borderRadius: selected ? BorderRadius.circular(12) : borderRadius,
-        boxShadow: [
-          if (selected)
-            BoxShadow(
-              color: Colors.grey,
-              spreadRadius: 0.25,
-              blurRadius: 0.25,
-            ),
-        ],
-      ),
-      child: InkWell(
-        onTap: () {
-          setState(() {
-            selectedIconLabel = iconLabel;
-          });
-        },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -300,9 +296,10 @@ class _InterLacedDashBoardState extends State<InterLacedDashBoard> {
   ///Note: This widget may not work due to the plugin update
   Widget staggaredColorGrid() {
     return Expanded(
-      child: StaggeredGrid.count(
+      child: GridView.count(
+        shrinkWrap: true,
         // shrinkWrap: true,
-        crossAxisCount: 4,
+        crossAxisCount: 2,
         crossAxisSpacing: 4,
         mainAxisSpacing: 4,
         children: events.map((InterlacedEvent event){
