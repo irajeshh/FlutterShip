@@ -16,7 +16,7 @@ class MobileHomePage extends StatefulWidget {
 class _MobileHomePageState extends State<MobileHomePage> {
   final TextEditingController searchController = TextEditingController();
   String query = '';
-  bool useGridView = false;
+  bool useGridView = true;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +90,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
         crossAxisSpacing: 12,
         mainAxisSpacing: 16,
       ),
+      padding: EdgeInsets.all(12),
       itemCount: _clones.length,
       itemBuilder: (BuildContext context, int index) {
         final Clone clone = _clones[index];
@@ -130,28 +131,35 @@ class _MobileHomePageState extends State<MobileHomePage> {
     return Card(
       elevation: 8,
       shadowColor: clone.color.withAlpha(100),
-      child: Container(
-        color: clone.color.withOpacity(0.1),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              clone.icon,
-              color: clone.color,
-              size: 30,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Txt(
-                text: clone.title,
-                maxLines: 1,
-                fontSize: 18,
+      child: Inkk(
+        onTap: () {
+          Widgets.push(clone.page, context);
+        },
+        spalshColor: clone.color,
+        child: Container(
+          width: double.maxFinite,
+          color: clone.color.withOpacity(0.1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                clone.icon,
                 color: clone.color,
-                fontWeight: FontWeight.bold,
+                size: 30,
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Txt(
+                  text: clone.title,
+                  maxLines: 1,
+                  fontSize: 18,
+                  color: clone.color,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
