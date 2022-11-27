@@ -87,7 +87,7 @@ class _TxtState extends State<Txt> {
         overflow: widget.useoverflow ? TextOverflow.ellipsis : null,
         textAlign: widget.textAlign,
         maxLines: widget.maxLines,
-        textScaleFactor: kIsWeb ? 1.25 : 1.3,
+        textScaleFactor: 1,//kIsWeb ? 1.25 : 1.3,
         style: TextStyle(
           decoration: widget.underline
               ? TextDecoration.underline
