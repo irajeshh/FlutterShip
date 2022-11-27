@@ -1,33 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fluttership/Constants/Constants.dart';
 import 'package:fluttership/Models/Clone.dart';
-import 'package:fluttership/UI/Pages/Account.dart';
-import 'package:fluttership/UI/Pages/AssemblingAnalyticsPage.dart';
-import 'package:fluttership/UI/Pages/ButtonExample.dart';
-import 'package:fluttership/UI/Pages/CustomStepper.dart';
-import 'package:fluttership/UI/Pages/DoubleCardExample.dart';
-import 'package:fluttership/UI/Pages/ExpandedBottomNav.dart';
-import 'package:fluttership/UI/Pages/ExpandileExample.dart';
-import 'package:fluttership/UI/Pages/GoogleSearchPage.dart';
-import 'package:fluttership/UI/Pages/ImgExample.dart';
-import 'package:fluttership/UI/Pages/InkkExample.dart';
-import 'package:fluttership/UI/Pages/InterLacedDashBoard.dart';
-import 'package:fluttership/UI/Pages/DribbbleBalExample.dart';
-import 'package:fluttership/UI/Pages/ProductDetailsPage.dart';
-import 'package:fluttership/UI/Pages/RichCalculator.dart';
-import 'package:fluttership/UI/Pages/SendMoneyPage.dart';
-import 'package:fluttership/UI/Pages/Tesla/Page.dart';
-import 'package:fluttership/UI/Pages/TimerDrawerPage.dart';
-import 'package:fluttership/Widgets/SearchBar.dart';
-import 'package:fluttership/Widgets/Widgets.dart';
 
-import '../Pages/ComplexDrawerPage.dart';
-import '../Pages/CurrenciesPage.dart';
-import '../Pages/ScrollerSamplePage.dart';
-
+import '../../Widgets/SearchBar.dart';
+import '../../Widgets/Widgets.dart';
 
 class MobileHomePage extends StatefulWidget {
-  const MobileHomePage({Key? key}) : super(key: key);
+  final List<Clone> clones;
+  const MobileHomePage({Key? key, required this.clones}) : super(key: key);
 
   @override
   _MobileHomePageState createState() => _MobileHomePageState();
@@ -57,32 +36,10 @@ class _MobileHomePageState extends State<MobileHomePage> {
     return SearchBar(
       onChanged: (z) => setState(() => query = z.toLowerCase()),
     );
-    // return Padding(
-    //   padding: const EdgeInsets.only(top: 28, bottom: 8),
-    //   child: Card(
-    //     elevation: 0,
-    //     color: Colors.grey.shade50,
-    //     child: ListTile(
-    //       leading: Icon(Icons.search, color: Colors.grey),
-    //       title: TextField(
-    //         controller: searchController,
-    //         onChanged: (z) => setState(() => query = z.toLowerCase()),
-    //         decoration: InputDecoration(
-    //           hintText: "Search FlutterShip...",
-    //           hintStyle: TextStyle(
-    //             color: Colors.grey,
-    //           ),
-    //           border: InputBorder.none,
-    //         ),
-    //       ),
-    //       trailing: IconButton(onPressed: clearSearch, icon: Icon(Icons.clear, color: Colors.grey)),
-    //     ),
-    //   ),
-    // );
   }
 
   Widget clonesResult() {
-    List<Clone> _clones = clones.where((clone) {
+    List<Clone> _clones = widget.clones.where((clone) {
       return clone.title.toString().toLowerCase().contains(query) ||
           clone.title.toString().toLowerCase().contains(query);
     }).toList();
@@ -97,7 +54,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
               icon: clone.icon,
               color: clone.color,
               title: clone.title,
-              subtitle: clone.subtitle,
+              subtitle: clone.description,
               onTap: () {
                 Widgets.push(clone.page, context);
               });
@@ -105,48 +62,6 @@ class _MobileHomePageState extends State<MobileHomePage> {
       ),
     );
   }
-
-  static List<Clone> clones = [
-    Clone(TimerDrawerPage(), Colorz.timerBlue, Icons.calendar_today, "Timer Drawer",
-        "Simple clean drawer design from dribbble.com"),
-    Clone(AccountPage(), Colors.pink, Icons.person, "Account Page",
-        "Colorful & BW Account Dashboard"),
-    Clone(CurrenciesPage(), Colors.green, Icons.monetization_on, "Currency page",
-        "Crypto currency coins app design dribbble.com"),
-    Clone(SendMoneyPage(), Colorz.sendMoneyBlue, Icons.dialpad, "Send Money",
-        "Money transfer screen design from dribbble.com"),
-    Clone(ScrollerSamplePage(), Colors.blue, Icons.list, "Scroller Sample",
-        "Example use case of scroller widget"),
-    Clone(GoogleSearchPage(), Colors.amber, Icons.search, "Google Search Clone",
-        "Cloing a google search results page"),
-    Clone(ComplexDrawerPage(), Colors.black, Icons.menu, "Complex Drawer",
-        "Designing a complex drawer menu"),
-    Clone(InterLacedDashBoard(), Colors.purple, Icons.dashboard_outlined, "Interlaced Dashboard",
-        "Designing a mixed account dashboard"),
-    Clone(AssemblingAnalyticsPage(), Colors.blue, Icons.apps, "Assembling Analytics",
-        "Analytics page with auto assembling animated widgets"),
-    Clone(ExpandedBottomNavigationBarPage(), Colorz.complexDrawerBlack, Icons.dns,
-        "Expanded Bottom Navigation Bar", "A custom bottom navigation bar with additional menus"),
-    Clone(RichCalculatorPage(), Colors.black, Icons.calculate, "Rich Calculator",
-        "A Non functioning calculator ui"),
-    Clone(ProductDetailsPage(), Colors.red, Icons.computer, "Product Details",
-        "An Imaginary UI of Apple Macbook Customization Page"),
-    Clone(ImgExample(), Colors.green, Icons.photo, "Img", "Example use case of Img widget"),
-    Clone(ButtonExample(), Colors.deepPurple, Icons.touch_app, "Buttons",
-        "Example use case of Button Widget"),
-    Clone(InkkExample(), Colors.blue, Icons.touch_app, "Inkk", "Example use case of Inkk Widget"),
-    Clone(StepperExample(), Colors.green, Icons.format_list_numbered, "Custom Stepper",
-        "Example use case of custom stepper widget design"),
-    Clone(DribbbleBallExamplePage(), Colors.pink, Icons.sports_basketball, "Dribbble Ball",
-        "Example use case of dribbble ball type of loading widgets"),
-    Clone(ExpandileExamplePage(), Colorz.iphone12Purple, Icons.expand_circle_down_outlined,
-        'Expandile example', 'To use expadile widget'),
-    Clone(DoubleCardExample(), Colorz.doubleCardBlue, Icons.layers, 'Double card example page',
-        'To use the double card widget'),
-    Clone(TeslaCarAppPage(), Colorz.complexDrawerBlack, Icons.car_rental, 'Tesla car control',
-        'Remote application model to control a tesla car for educational purpose only'),
-    
-  ];
 
   void clearSearch() {
     searchController.clear();
