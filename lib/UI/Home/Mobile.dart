@@ -66,9 +66,9 @@ class _MobileHomePageState extends State<MobileHomePage> {
     return Expanded(
       child: CrossFade(
         useCenter: false,
-        hiddenChild: listViewBuilder(),
+        hiddenChild: gridViewBuilder(),
         show: useGridView,
-        child: gridViewBuilder(),
+        child: listViewBuilder(),
       ),
     );
   }
