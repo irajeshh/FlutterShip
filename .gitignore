@@ -33,7 +33,6 @@ migrate_working_dir/
 /build/
 
 # Web related
-lib/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols
@@ -50,3 +49,4 @@ pubspec.lock
 .vscode/settings.json
 pubspec.lock
 pubspec.lock
+.firebase/hosting.YnVpbGQvd2Vi.cache
