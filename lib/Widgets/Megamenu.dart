@@ -1,5 +1,62 @@
 part of './Widgets.dart';
 
+///Sample Usage in a page
+class Prime extends StatefulWidget {
+  ///Constructor
+  const Prime({super.key});
+
+  @override
+  State<Prime> createState() => _PrimeState();
+}
+
+class _PrimeState extends State<Prime> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: List<Widget>.generate(10, (int i) {
+        return Megamenu(
+          menu: Container(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              width: 200,
+              // color: Colors.green,
+              alignment: Alignment.centerLeft,
+              child: ListView.builder(
+                itemCount: i + 1,
+                itemBuilder: (BuildContext context, int j) {
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 4),
+                    padding: const EdgeInsets.all(8),
+                    height: 50,
+                    width: 100,
+                    alignment: Alignment.centerLeft,
+                    color: Colors.grey.shade200,
+                    child: Text(
+                      'Sub Category ${j + 1}',
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 2),
+            height: 50,
+            width: 100,
+            color: Colors.grey.shade300,
+            alignment: Alignment.center,
+            child: Text(
+              'Category ${i + 1}',
+              // color: Colors.black,
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
+///A large hovering menu setup which is used in most of the native websites.
 class Megamenu extends StatefulWidget {
   ///Primary widget to be shown permanently
   final Widget child;
